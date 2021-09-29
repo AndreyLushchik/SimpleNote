@@ -1,0 +1,28 @@
+.header {
+    background: linear-gradient(230deg, #6d97ce, #a664d1);
+    width: 80%;
+    min-width: 360px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+
+    h1 {
+        font-size: 36px;
+        line-height: 60px;
+        color: #080225d0;
+    }
+}
+
+#clock {
+    font-size: 36px;
+    display: table;
+    color: #080225;
+    background-color: #ffffff48;
+    border-radius: 5px;
+    padding: 5px;
+}

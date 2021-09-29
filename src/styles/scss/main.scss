@@ -1,0 +1,11 @@
+@import "../scss/config/reset";
+@import "../scss/config/root";
+@import "../scss/global/fonts";
+@import "../scss/global/variables";
+@import "../scss/global/mixins";
+
+@import "../scss/components/header";
+@import "../scss/components/content";
+@import "../scss/components/card";
+@import "../scss/components/todo";
+@import "../scss/components/button";

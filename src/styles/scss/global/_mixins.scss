@@ -1,0 +1,57 @@
+@mixin btnGeneral {
+    border: none;
+    width: 80%;
+    background-color: #7987b6;
+    height: 40px;
+    border-radius: 20px 20px 0 0;
+    transition: 0.1s ease-in;
+    bottom: 0;
+}
+
+@mixin todoGeneral {
+    width: 50%;
+    overflow: hidden;
+}
+
+/*@mixin nonelink {
+    text-decoration: none;
+    outline: none;
+}
+
+@mixin container {
+    position: relative;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    min-width: 320px;
+    max-width: 1216px;
+    padding: 0 5px;
+}
+
+@mixin subtitle {
+    font-family: 'Roboto';
+    font-size: 1.4em;
+    line-height: 28 / 14 * 100%;
+    text-transform: uppercase;
+    color: #929A9F;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+}
+
+@mixin title {
+    font-family: 'Roboto';
+    color: #263640;
+    font-weight: bold;
+}
+
+@mixin text {
+    font-family: 'Roboto';
+    font-size: 1.6em;
+
+    line-height: 28 / 16 * 100%;
+
+    color: #929A9F;
+    font-weight: 500;
+} 
+*/
