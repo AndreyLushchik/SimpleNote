@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/main.min.4b53d7b6.css">
+    <link rel="stylesheet" href="/style.de51006f.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+    <script src="/scripts.b6981b85.js" defer="" type="module"></script>
+    <title>SimpleNote</title>
+<script src="/main.min.4b53d7b6.js"></script><script src="/style.de51006f.js"></script></head>
+
+<body>
+    <div id="root">
+        <div class="header">
+            <h1>SimpleNote</h1>
+            <div class="clock">
+                <span id="clock">22:42:15</span>
+            </div>
+        </div>
+        <div class="main">
+            <div id="todo">
+                <div class="discription-header">
+                    <h4>Todo:</h4>
+                    <span class="counter">0</span>
+                </div>
+                <div class="todo-content-card">
+                    <div class="todo-card">
+                        <div class="left-side">
+                            <h5 class="title">Title</h5>
+                            <span class="todo-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. At libero
+                                blanditiis, eum
+                                autem architecto necessitatibus amet nesciunt distinctio nostrum minus.</span>
+                            <span class="todo-user">UserName</span>
+                        </div>
+                        <div class="right-side">
+                            <div class="control-button">
+                                <button id="edit"><i class="fas fa-pen"></i></button>
+                                <button id="delete-card"><i class="fas fa-trash-alt"></i></button>
+                            </div>
+                            <button class="next fas fa-chevron-right"></button>
+                            <span class="create-time">22:42:15</span>
+                        </div>
+                    </div>
+                    <div class="todo-card">
+                        <div class="left-side">
+                            <span class="title">Title</span>
+                            <span class="todo-text">Description</span>
+                            <span class="todo-user">UserName</span>
+                        </div>
+                        <div class="right-side">
+                            <div class="control-button">
+                                <button id="edit"><i class="fas fa-pen"></i></button>
+                                <button id="delete-card"><i class="fas fa-trash-alt"></i></button>
+                            </div>
+                            <button class="next fas fa-chevron-right"></button>
+                            <span class="create-time">22:42:15</span>
+                        </div>
+                    </div>
+                </div>
+                <button id="add" class="btn_add js-open-modal">Add todo</button>
+
+                <div class="modal modal-hidden js-modal-backdrop">
+                  <div class="modal-content">
+                    <div class="close-btn js-close-modal"></div>
+
+            <div class="contact">
+                <h3>Case card</h3>
+                <form action="#">
+                    <p>
+                        <label for="#">Name</label>
+                        <input type="text" name="name">
+                    </p>
+                    <p>
+                        <label for="#">Surname</label>
+                        <input type="text" name="surname">
+                    </p>
+                    <p>
+                        <label for="#">Email Address</label>
+                        <input type="email" name="email">
+                    </p>
+                    <p>
+                        <label for="#">Phone Number</label>
+                        <input type="text" name="phone">
+                    </p>
+                    <p class="full">
+                        <label for="#">Title</label>
+                        <textarea name="title" cols="30" rows="1"></textarea>
+                    </p>
+                
+                    <p class="full">
+                        <label for="#">Description</label>
+                        <textarea name="description" cols="30" rows="5"></textarea>
+                    </p>
+                    <p class="full">
+                        <button>Submit</button>
+                    </p>
+                </form>
+            </div>
+
+                  </div>
+                </div>
+            </div>
+            <div id="progress">
+                <div class="discription-header">
+                    <h4>Progress:</h4>
+                    <span class="counter">0</span>
+                </div>
+                <div class="todo-content-card">
+
+                </div>
+            </div>
+            <div id="done">
+                <div class="discription-header">
+                    <h4>Done:
+                        <span class="counter">0</span>
+                </h4></div>
+                <div class="todo-content-card">
+
+                </div>
+                <button id="delete-all" class="btn_delete">Delete All</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

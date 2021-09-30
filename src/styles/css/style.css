@@ -1,0 +1,92 @@
+
+.modal {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(37, 45, 58, 0.7);
+  }
+  
+  .modal-hidden {
+    display: none;
+  }
+  
+  .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 650px;
+    min-height: 380px;
+    padding: 50px 80px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 4px rgba(1, 2, 2, 0.2);
+    border-radius: 2px;
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    background-image: url("https://image.flaticon.com/icons/png/512/64/64146.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: transform 0.1s linear;
+  }
+  
+  .close-btn:hover {
+    transform: rotate(90deg);
+  }
+ 
+/*FORM */
+.contact {
+    background: #f9feff;
+}
+
+.contact form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+
+.contact form label {
+    display: block;
+}
+
+.contact form p {
+    margin: 0;
+}
+
+.contact form .full {
+    grid-column: 1 / 3;
+}
+
+.contact form button, .contact form input, .contact form textarea {
+    width: 100%;
+    padding: 1em;
+    border: 1px solid #c9e6ff;
+}
+
+.contact form button {
+    background: #c9e6ff;
+    border: 0;
+    text-transform: uppercase;
+}
+
+.contact form button:hover, .contact form button:focus {
+    background: #92bde7;
+    color: #fff;
+    outline: 0;
+    transition: background-color 0.5s ease-out;
+}
+
