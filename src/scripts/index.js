@@ -7,3 +7,5 @@
 });*/
 import {clock} from './clock.js'
 setInterval(clock, 1000);
+
+import { openModal, closeModal } from './modal_window.js'

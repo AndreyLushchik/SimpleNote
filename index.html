@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="src/styles/css/main.min.css" />
+    <link rel="stylesheet" href="src/styles/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
         integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -61,7 +62,45 @@
                         </div>
                     </div>
                 </div>
-                <button id="add" class="btn_add">Add todo</button>
+                <button id="add" class="btn_add js-open-modal">Add todo</button>
+ <!-------------------------------------------------------------------------------------------------->               
+        <div class="modal modal-hidden js-modal-backdrop">
+            <div class="modal-content">
+                <div class="close-btn js-close-modal"></div>
+                <div class="contact">
+                    <form action="#">
+                      <p>
+                          <label for="#">Name</label>
+                          <input type="text" name="name">
+                      </p>
+                      <p>
+                          <label for="#">Surname</label>
+                          <input type="text" name="surname">
+                      </p>
+                      <p>
+                          <label for="#">Email Address</label>
+                          <input type="email" name="email">
+                      </p>
+                      <p>
+                          <label for="#">Phone Number</label>
+                          <input type="text" name="phone">
+                      </p>
+                      <p class="full">
+                          <label for="#">Title</label>
+                          <textarea name="title" cols="30" rows="1"></textarea>
+                      </p>
+                      <p class="full">
+                          <label for="#">Description</label>
+                          <textarea name="description" cols="30" rows="5"></textarea>
+                      </p>
+                      <p class="full">
+                          <button>Submit</button>
+                      </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+ <!-------------------------------------------------------------------------------------------------->    
             </div>
             <div id="progress">
                 <div class="discription-header">
