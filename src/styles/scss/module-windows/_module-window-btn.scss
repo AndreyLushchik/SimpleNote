@@ -1,0 +1,52 @@
+.close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: inline-block;
+  width: 45px;
+  height: 45px;
+  background-image: url("https://image.flaticon.com/icons/png/512/64/64146.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: transform 0.1s linear;
+}
+
+.close-btn:hover {
+  transform: rotate(90deg);
+}
+
+.sub-form-btn {
+  border: none;
+  width: 115px;
+  height: 42px;
+  background-color: #2a2a2a;
+  border-radius: 3px;
+  box-shadow: 0 4px 10px rgba(1, 2, 2, 0.2);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 74px;
+  text-transform: uppercase;
+  line-height: 42px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btn {
+  border: none;
+  width: 115px;
+  height: 42px;
+  background-color: #2a2a2a;
+  border-radius: 3px;
+  box-shadow: 0 4px 10px rgba(1, 2, 2, 0.2);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 74px;
+  text-transform: uppercase;
+  line-height: 42px;
+  cursor: pointer;
+  font-family: inherit;
+}
