@@ -1,37 +1,28 @@
 import { clock } from "./clock.js";
-import { createHeader } from "./modal_window.js";
-import {
-  dropdownIcon,
-  dropdown,
-  createInput,
-  showDropdown,
-  toggleDropdown,
-  selectOption,
-} from "./modal_windows-select";
+setInterval(clock, 1000);
 
-//Start App
-document.addEventListener("DOMContentLoaded", app);
-
-function app() {
-  const root = document.getElementById("root");
-
-
-  //openModalBtn.addEventListener("click", openModal);
-  //modal.addEventListener("click", closeModal);
-  const header = createHeader();
-  header.addEventListener("click", onHeaderClick);
-
-  root.append(header); //вставляет переданный элемент после дочернего
-
-}
+import { openModal, closeModal } from "./modal_window.js";
+import { createInput, showDropdown} from "./modal_windows-select";
 
 // Event Handlers
-function onHeaderClick(event) {
-  if ((event.target.id = ".js-open-modal")) {
-    openModalBtn.addEventListener("click", openModal);
-  } else if ((event.target.id = ".js-close-modal")) {
-    modal.addEventListener("click", closeModal);
-  }
-}
+const openModalBtn = document.querySelector(".js-open-modal");
+openModalBtn.addEventListener('click', event => {
+    if (event.target.id === 'add') {
+        openModal()
+    }
+    if (event.target.className === '.js-close-modal') {
+        closeModal(event)
+    }
+})
 
-setInterval(clock, 1000);
+const printArea = document.querySelector("#select");
+const dropdown = () => {
+    const component = document.createElement("div");
+    const input = createInput();
+    const dropdown = showDropdown();
+  
+    component.appendChild(input);
+    component.appendChild(dropdown);
+    printArea.appendChild(component);
+  };
+  dropdown();

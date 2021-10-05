@@ -40,19 +40,6 @@ const users = [
   },
 ];
 
-const printArea = document.querySelector("#select");
-
-const dropdown = () => {
-  const component = document.createElement("div");
-
-  const input = createInput();
-  const dropdown = showDropdown();
-
-  component.appendChild(input);
-  component.appendChild(dropdown);
-  printArea.appendChild(component);
-};
-
 const createInput = () => {
   // Creates the input outline
   const input = document.createElement("div");
@@ -113,13 +100,4 @@ const selectOption = (name) => {
   toggleDropdown();
 };
 
-dropdown();
-
-export {
-  dropdownIcon,
-  dropdown,
-  createInput,
-  showDropdown,
-  toggleDropdown,
-  selectOption,
-};
+export { createInput, showDropdown};

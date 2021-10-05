@@ -27,17 +27,17 @@
   width: 100%;
   padding: 1em;
   border: 1px solid #c9e6ff;
+  border-radius: 10px;
 }
 
 .contact form button {
-  background: #c9e6ff;
+  background: linear-gradient(230deg, #6d97ce, #a664d1);
   border: 0;
   text-transform: uppercase;
 }
 
 .contact form button:hover,
 .contact form button:focus {
-  background: #92bde7;
   color: #fff;
   outline: 0;
   transition: background-color 0.5s ease-out;
