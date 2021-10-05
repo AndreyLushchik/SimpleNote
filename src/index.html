@@ -21,29 +21,6 @@
                 <time id="clock">22:42:15</time>
             </div>
         </header>
-       <!-------------------------------------------------------------------------------------------------->               
-        <div class="modal modal-hidden js-modal-backdrop">
-            <div class="modal-content">
-                <button class ="close-btn js-close-modal"></button>
-                <div class="contact">
-                    <form action="#">
-                      <p class="full">
-                          <label for="#">Title</label>
-                          <textarea name="title" cols="30" rows="1"></textarea>
-                      </p>
-                      <p class="full">
-                          <label for="#">Description</label>
-                          <textarea name="description" cols="30" rows="5"></textarea>
-                      </p>
-                      <div id="select"></div>
-                      <p class="full">
-                          <button>Submit</button>
-                      </p>
-                    </form>
-                </div>
-            </div>
-        </div>
- <!-------------------------------------------------------------------------------------------------->  
         <div class="main">
             <div id="todo">
                 <div class="discription-header">
@@ -94,7 +71,30 @@
                         </div>
                     </div>
                 </div>
-                <button id="add" class="btn-add" type="button">Add todo</button>
+                <button id="add" class="btn-add js-open-modal" type="button">Add todo</button>
+                <!-------------------------------------------------------------------------------------------------->
+                <div class="modal modal-hidden js-modal-backdrop">
+                    <div class="modal-content">
+                        <button class="close-btn js-close-modal"></button>
+                        <div class="contact">
+                            <form action="#">
+                                <p class="full">
+                                    <label for="#">Title</label>
+                                    <textarea name="title" cols="30" rows="1"></textarea>
+                                </p>
+                                <p class="full">
+                                    <label for="#">Description</label>
+                                    <textarea name="description" cols="30" rows="5"></textarea>
+                                </p>
+                                <div id="select"></div>
+                                <p class="full">
+                                    <button>Submit</button>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-------------------------------------------------------------------------------------------------->
             </div>
             <div id="progress">
                 <div class="discription-header">

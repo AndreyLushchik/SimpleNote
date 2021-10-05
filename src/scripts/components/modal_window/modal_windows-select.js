@@ -5,6 +5,7 @@ function getUser() {
 }
 
 function printUser(users) {
+  const printArea = document.querySelector("#select");
   const list = document.createElement("select");
   printArea.append(list);
   users.forEach((users) => {
@@ -14,8 +15,5 @@ function printUser(users) {
   });
 }
 getUser();
-
-const printArea = document.querySelector("#select");
-
 
 export { getUser };

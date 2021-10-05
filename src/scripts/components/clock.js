@@ -1,6 +1,6 @@
  export function getClock() {
         const clock = document.getElementById("clock");
-        clock.innerHTML = renderClock()
+        clock.textContent = renderClock()
  }
 
  function renderClock() {
