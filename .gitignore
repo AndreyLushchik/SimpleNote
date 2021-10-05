@@ -1,5 +1,5 @@
 node_modules
-package-lock.json
-package.json
-dist
 .cache
+dist
+package-lock.json
+
