@@ -1,10 +1,9 @@
- export function getClock() {
-        const clock = document.getElementById("clock");
-        clock.textContent = renderClock()
- }
+export function renderClock() {
+  const clock = document.getElementById("clock");
+  clock.textContent = getTime();
+}
 
- function renderClock() {
-        let now = new Date();
-        now = now.toLocaleTimeString();
-        return now
- }
+function getTime() {
+  const time = new Date();
+  return time.toLocaleTimeString();
+}

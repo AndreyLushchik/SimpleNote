@@ -1,11 +1,11 @@
-import { getClock } from "./components/clock.js";
+import { renderClock } from "./components/clock.js";
 import {
   openModal,
   closeModal,
 } from "./components/modal_window/modal_window.js";
 import { getUser } from "./components/modal_window/modal_windows-select";
 
-setInterval(getClock, 1000);
+setInterval(renderClock, 1000);
 // Event Handlers
 const openModalBtn = document.querySelector(".js-open-modal");
 openModalBtn.addEventListener("click", (event) => {
