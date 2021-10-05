@@ -1,6 +1,7 @@
-export function Todo(text){
-    this.id = Math.random()
+function Todo(text){
+    this.id = Math.random().toString()
     this.text = text 
-    this.date = new Date().toDateString();
-  }
-  
+    this.date = new Date().toLocaleTimeString();
+}
+ 
+export {Todo}
