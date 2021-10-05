@@ -15,8 +15,7 @@
         "../scss/components/_button.scss",
         "../scss/module-windows/_module-window.scss",
         "../scss/module-windows/_module-window-form.scss",
-        "../scss/module-windows/_module-window-btn.scss",
-        "../scss/module-windows/_module-window-select.scss"
+        "../scss/module-windows/_module-window-btn.scss"
     ],
     "names": [],
     "file": "main.min.css"
