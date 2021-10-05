@@ -15,54 +15,13 @@
 
 <body>
     <div id="root">
-        <div class="header">
+        <header class="header">
             <h1>SimpleNote</h1>
             <div class="clock">
-                <span id="clock">22:42:15</span>
+                <time id="clock">22:42:15</time>
             </div>
-        </div>
-        <div class="main">
-            <div id="todo">
-                <div class="discription-header">
-                    <h4>Todo:</h4>
-                    <span class="counter">0</span>
-                </div>
-                <div class="todo-content-card">
-                    <div class="todo-card">
-                        <div class="left-side">
-                            <h5 class="title">Title</h5>
-                            <span class="todo-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. At libero
-                                blanditiis, eum
-                                autem architecto necessitatibus amet nesciunt distinctio nostrum minus.</span>
-                            <span class="todo-user">UserName</span>
-                        </div>
-                        <div class="right-side">
-                            <div class="control-button">
-                                <button id="edit"><i class="fas fa-pen"></i></button>
-                                <button id="delete-card"><i class="fas fa-trash-alt"></i></button>
-                            </div>
-                            <button class="next fas fa-chevron-right"></button>
-                            <span class="create-time">22:42:15</span>
-                        </div>
-                    </div>
-                    <div class="todo-card">
-                        <div class="left-side">
-                            <span class="title">Title</span>
-                            <span class="todo-text">Description</span>
-                            <span class="todo-user">UserName</span>
-                        </div>
-                        <div class="right-side">
-                            <div class="control-button">
-                                <button id="edit"><i class="fas fa-pen"></i></button>
-                                <button id="delete-card"><i class="fas fa-trash-alt"></i></button>
-                            </div>
-                            <button class="next fas fa-chevron-right"></i></button>
-                            <span class="create-time">22:42:15</span>
-                        </div>
-                    </div>
-                </div>
-                <button id="add" class="btn_add js-open-modal">Add todo</button>
- <!-------------------------------------------------------------------------------------------------->               
+        </header>
+       <!-------------------------------------------------------------------------------------------------->               
         <div class="modal modal-hidden js-modal-backdrop">
             <div class="modal-content">
                 <button class ="close-btn js-close-modal"></button>
@@ -84,7 +43,58 @@
                 </div>
             </div>
         </div>
- <!-------------------------------------------------------------------------------------------------->    
+ <!-------------------------------------------------------------------------------------------------->  
+        <div class="main">
+            <div id="todo">
+                <div class="discription-header">
+                    <h4>Todo:</h4>
+                    <span class="counter">0</span>
+                </div>
+                <div class="todo-content-card">
+                    <div class="todo-card">
+                        <span class="left-side">
+                            <h5 class="title">Title</h5>
+                            <p class="todo-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. At libero
+                                blanditiis, eum
+                                autem architecto necessitatibus amet nesciunt distinctio nostrum minus.</p>
+                            <select class="todo-user">
+                                <option value="Aleksei">Алексей</option>
+                                <option value="Anastasia" selected>Анастасия</option>
+                                <option value="Andrey">Андрей</option>
+                                <option value="Serhei">Сергей</option>
+                            </select>
+                        </span>
+                        <div class="right-side">
+                            <div class="control-button">
+                                <button id="edit" class="fas fa-pen" type="button"></button>
+                                <button id="delete-card" class="fas fa-trash-alt" type="button"></button>
+                            </div>
+                            <button class="next fas fa-chevron-right" type="button"></button>
+                            <time class="create-time">22:42:15</time>
+                        </div>
+                    </div>
+                    <div class="todo-card">
+                        <span class="left-side">
+                            <h5 class="title">Title</h5>
+                            <p class="todo-text">Description</p>
+                            <select class="todo-user">
+                                <option value="Aleksei">Алексей</option>
+                                <option value="Anastasia">Анастасия</option>
+                                <option value="Andrey">Андрей</option>
+                                <option value="Serhei" selected>Сергей</option>
+                            </select>
+                        </span>
+                        <div class="right-side">
+                            <div class="control-button">
+                                <button id="edit" class="fas fa-pen" type="button"></button>
+                                <button id="delete-card" class="fas fa-trash-alt" type="button"></button>
+                            </div>
+                            <button class="next fas fa-chevron-right" type="button"></i></button>
+                            <time class="create-time">22:42:15</time>
+                        </div>
+                    </div>
+                </div>
+                <button id="add" class="btn-add" type="button">Add todo</button>
             </div>
             <div id="progress">
                 <div class="discription-header">
@@ -101,9 +111,8 @@
                         <span class="counter">0</span>
                 </div>
                 <div class="todo-content-card">
-
                 </div>
-                <button id="delete-all" class="btn_delete">Delete All</button>
+                <button id="delete-all" class="btn-delete" type="button">Delete All</button>
             </div>
         </div>
     </div>
