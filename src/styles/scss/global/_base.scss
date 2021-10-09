@@ -1,0 +1,19 @@
+html {
+    font-size: 10px;
+}
+
+::-webkit-input-placeholder {
+    color: #f9f0da;
+}
+
+.wrapper {
+    min-height: 100%;
+    overflow: hidden;
+    background: url("/../src/images/image-backgraund/fullscreen.jpg") 50% / cover no-repeat;
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1200px;
+}

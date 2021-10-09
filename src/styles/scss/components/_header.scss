@@ -1,28 +1,53 @@
 .header {
-    background: linear-gradient(230deg, #6d97ce, #a664d1);
-    width: 80%;
-    min-width: 360px;
+  background: rgba(107, 100, 100, 1);
+  height: 50px;
+
+  &__flex-container {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center;
-    border-radius: 20px;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    position: relative;
+    width: 100%;
+    height: 50px;
+  }
 
-    h1 {
-        font-size: 36px;
-        line-height: 60px;
-        color: #080225d0;
+  &__search {
+    border: solid 1.5px #ffff;
+    border-radius: 3px 3px 3px 3px;
+    width: 20rem;
+    height: 30px;
+    font-family: 'Roboto', sans-serif;
+    padding-left: 3.5rem;
+    margin-left: 10px;
+    background: rgba(199, 191, 191, 1);
+    font-size: 1.6rem;
+
+    &:hover {
+      background: rgba(224, 215, 215, 1);
     }
-}
+  }
 
-#clock {
-    font-size: 36px;
-    display: table;
-    color: #080225;
-    background-color: #ffffff48;
-    border-radius: 5px;
-    padding: 5px;
+  &__seach-btn {
+    border: none;
+    outline: none;
+    background: transparent;
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    left: 10px;
+    cursor: pointer;
+
+    &::before {
+      content: "\f002";
+      font-family: FontAwesome;
+      font-size: 16px;
+      color: #ffff;
+    }
+  }
+
+  &__clock {
+    margin-right: 10px;
+    font-size: 2.5rem;
+    color: #ffff;
+  }
 }

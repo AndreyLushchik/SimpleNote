@@ -1,16 +1,17 @@
-@import "../scss/config/reset";
-@import "../scss/config/root";
-@import "../scss/global/fonts";
-@import "../scss/global/variables";
-@import "../scss/global/mixins";
+// Global
+@import "../scss/global/reset" ; 
+@import "../scss/global/base" ;
 
+
+
+// Components 
 @import "../scss/components/header";
 @import "../scss/components/content";
-@import "../scss/components/card";
-@import "../scss/components/todo";
-@import "../scss/components/button";
+@import "../scss/components/column-todo";
+@import "../scss/components/column-progress";
+@import "../scss/components/column-done";
+@import "../scss/components/card-todo";
+@import "../scss/components/popup-todo";
 
-//module windows
-@import "../scss/module-windows/_module-window.scss";
-@import "../scss/module-windows/_module-window-form.scss";
-@import "../scss/module-windows/_module-window-btn.scss";
+
+
