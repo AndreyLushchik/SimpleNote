@@ -3,13 +3,13 @@ html {
 }
 
 ::-webkit-input-placeholder {
-    color: #f9f0da;
+    color:rgba(92, 95, 102, 1);
 }
 
 .wrapper {
     min-height: 100%;
     overflow: hidden;
-    background: url("/../src/images/image-backgraund/fullscreen.jpg") 50% / cover no-repeat;
+    background: url("/../src/images/image-background/fullscreen.jpg") 20% / cover no-repeat;
     @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 }
 
