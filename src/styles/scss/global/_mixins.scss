@@ -1,0 +1,8 @@
+@mixin hover-button {
+  background: linear-gradient($primary-color 20%, #00a2ff);
+}
+
+@mixin active-button {
+    background: linear-gradient($primary-color 20%, $color-pressed);
+    box-shadow: 0 -1px rgba(255, 255, 255, 0.4) inset;
+  }
