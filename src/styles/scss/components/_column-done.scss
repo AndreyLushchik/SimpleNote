@@ -33,12 +33,11 @@
     background: #d2dfea linear-gradient($primary-color, #bce0ec);
 
     &:hover {
-      background: linear-gradient($primary-color 20%, #00a2ff);
+      @include hover-button;
     }
 
     &:active {
-      background: linear-gradient($primary-color 20%, rgba(110, 121, 128, 0.8));
-      box-shadow: 0 -1px rgba(255, 255, 255, 0.4) inset;
+      @include active-button;
     }
 
     &::before {
