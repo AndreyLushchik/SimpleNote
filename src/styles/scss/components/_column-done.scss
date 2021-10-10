@@ -1,26 +1,23 @@
-
 .column-done {
+  display: flex;
+  flex-direction: column;
+  background: $card-color;
+  opacity: 0.9;
+  width: 350px;
+  border-radius: 5px;
 
-    display: flex;
-    flex-direction: column;
-    background: rgba(204, 213, 235, 1);
-    opacity: 0.9;
-    width: 350px;
-    border-radius: 5px;
-    
+  &__title {
+    font-size: 2rem;
+    color: rgba(12, 30, 74, 1);
+    font-family: "Roboto", sans-serif;
+    margin-bottom: 10px;
+    margin: 10px 0 10px 3.5rem;
+  }
 
-    &__title {
-        font-size: 2rem;
-        color: rgba(12, 30, 74, 1);
-        font-family: "Roboto", sans-serif;
-        margin-bottom: 10px;
-        margin:10px 0 10px 3.5rem;
-    }
+  // &__card-container {
+  // }
 
-     // &__card-container {
-    // }
-
- &__btn-done--delete {
+  &__btn-done--delete {
     position: relative;
     margin-bottom: 5px;
     margin-left: 2.5rem;
@@ -28,20 +25,28 @@
     width: 15rem;
     font-family: "Roboto", sans-serif;
     font-size: 1.6rem;
-    border-radius: 3px;
-    background: rgba(204, 213, 235, 1);
-    color: rgba(92, 95, 102, 1);
+    color: #000;
+    outline: none;
+    border: 1px solid rgba(110, 121, 128, 0.8);
+    border-top-color: rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    background: #d2dfea linear-gradient($primary-color, #bce0ec);
 
     &:hover {
-      background: rgba(199, 191, 191, 1);
+      background: linear-gradient($primary-color 20%, #00a2ff);
     }
+
+    &:active {
+      background: linear-gradient($primary-color 20%, rgba(110, 121, 128, 0.8));
+      box-shadow: 0 -1px rgba(255, 255, 255, 0.4) inset;
+    }
+
     &::before {
       content: "\f067";
       position: absolute;
       left: 10px;
       font-family: FontAwesome;
-      size: 2px;
       color: rgba(92, 95, 102, 1);
     }
-    }
+  }
 }

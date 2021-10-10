@@ -1,24 +1,87 @@
-.card{
-    width: 300px;
-    min-height: 100px;
-    background:#ffff;
-    border-radius: 10px;
-    border: solid 2px black;
-    margin: 10px 0 10px 0;
+.card {
+  width: 300px;
+  min-height: 100px;
+  background: #ffff;
+  border-radius: 10px;
+  border: solid 2px black;
+  margin: 1em 0 1em 0;
+  padding: 0.8em;
 
-    &__title{}
+  &__title {
+    margin: 0.5em 0 0.5em;
+    font-size: 1.2em;
+    text-decoration: underline;
+  }
 
-    &__description{}
+  &__description {
+    margin: 1em 0 1em;
+  }
 
-    &__user{}
+  &__user {
+    margin: 1em 0 1em;
+  }
 
-    &__btn-edit{}
+  &__btn-edit {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: 0.1em 0.8em;
+    outline: none;
+    border-width: 2px 0;
+    border-style: solid none;
+    border-color: $primary-color #000 $card-color;
+    border-radius: 6px;
+    background: linear-gradient(#00a2ff, $primary-color) #003cff;
+    transition: 0.2s;
+  }
+  &__btn-edit:hover {
+    background: linear-gradient($primary-color, #00a2ff);
+  }
+  &__btn-edit:active {
+    background: linear-gradient($primary-color 20%, #003cff);
+  }
 
-    &__btn-delete{}
+  &__btn-delete {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: 0.1em 0.8em;
+    outline: none;
+    border-width: 2px 0;
+    border-style: solid none;
+    border-color: $primary-color #000 $card-color;
+    border-radius: 6px;
+    background: linear-gradient(#00a2ff, $primary-color) #003cff;
+    transition: 0.2s;
+  }
+  &__btn-delete:hover {
+    background: linear-gradient($primary-color, #00a2ff);
+  }
+  &__btn-delete:active {
+    background: linear-gradient($primary-color 20%, #003cff);
+  }
 
-    &__btn-progress{}
+  &__btn-progress {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: 0.1em 0.8em;
+    outline: none;
+    border-width: 2px 0;
+    border-style: solid none;
+    border-color: $primary-color #000 $card-color;
+    border-radius: 6px;
+    background: linear-gradient(#00a2ff, $primary-color) #003cff;
+    transition: 0.2s;
+  }
+  &__btn-progress:hover {
+    background: linear-gradient($primary-color, #00a2ff);
+  }
+  &__btn-progress:active {
+    background: linear-gradient($primary-color 20%, #003cff);
+  }
 
-    &__time{}
-
+  &__time {
+    margin: 1em 0 1em;
+  }
 }
-
