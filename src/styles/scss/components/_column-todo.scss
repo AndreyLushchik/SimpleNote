@@ -3,14 +3,14 @@
   flex-direction: column;
   background: $card-color;
   opacity: 0.94;
-  width: 350px;
-  border-radius: 5px;
+  width: 35rem;
+  border-radius: 0.5rem;
 
   &__title {
     font-size: 2rem;
     color: rgba(12, 30, 74, 1);
     font-family: "Roboto", sans-serif;
-    margin: 10px 0 10px 3.5rem;
+    margin: 1rem 0 1rem 3.5rem;
   }
 
   &__card-container {
@@ -22,9 +22,9 @@
 
   &__btn-todo--add {
     position: relative;
-    margin-bottom: 5px;
+    margin-bottom: 0.5rem;
     margin-left: 2.5rem;
-    padding: 5px 25px 5px 0px;
+    padding: 0.5rem 0.25rem 0.5rem 0rem;
     width: 15rem;
     font-family: "Roboto", sans-serif;
     font-size: 1.6rem;
@@ -32,7 +32,7 @@
     outline: none;
     border: 1px solid rgba(110, 121, 128, 0.8);
     border-top-color: rgba(0, 0, 0, 0.3);
-    border-radius: 5px;
+    border-radius: 0.5rem;
     background: #d2dfea linear-gradient($primary-color, #bce0ec);
 
     &:hover {
@@ -46,7 +46,7 @@
     &::before {
       content: "\f067";
       position: absolute;
-      left: 10px;
+      left: 1em;
       font-family: FontAwesome;
       color: rgba(92, 95, 102, 1);
     }

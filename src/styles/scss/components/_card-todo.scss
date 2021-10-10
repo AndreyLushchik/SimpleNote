@@ -1,12 +1,12 @@
 .card {
-  width: 300px;
-  overflow-wrap: break-word;
-  min-height: 100px;
-  background: #ffff;
-  border-radius: 10px;
-  border: solid 2px black;
-  margin: 1em 0 1em 0;
-  padding: 0.8em;
+    width: 30rem;
+    overflow-wrap: break-word;
+    min-height: 10em;
+    background: #ffff;
+    border-radius: 1em;
+    border: solid 0.2rem black;
+    margin: 1em 0 1em 0;
+    padding: 0.8em;
 
   &__title {
     margin: 0.5em 0 0.5em;
@@ -32,10 +32,10 @@
     text-decoration: none;
     padding: 0.1em 0.8em;
     outline: none;
-    border-width: 2px 0;
+    border-width: 0.2rem 0;
     border-style: solid none;
     border-color: $primary-color #000 $card-color;
-    border-radius: 6px;
+    border-radius: 0.6rem;
     background: linear-gradient(#00a2ff, $primary-color) $color-pressed;
     transition: 0.2s;
   }
@@ -52,10 +52,10 @@
     text-decoration: none;
     padding: 0.1em 0.8em;
     outline: none;
-    border-width: 2px 0;
+    border-width: 0.2rem 0;
     border-style: solid none;
     border-color: $primary-color #000 $card-color;
-    border-radius: 6px;
+    border-radius: 0.6rem;
     background: linear-gradient(#00a2ff, $primary-color) $color-pressed;
     transition: 0.2s;
   }
@@ -72,10 +72,10 @@
     text-decoration: none;
     padding: 0.1em 0.8em;
     outline: none;
-    border-width: 2px 0;
+    border-width: 0.2rem 0;
     border-style: solid none;
     border-color: $primary-color #000 $card-color;
-    border-radius: 6px;
+    border-radius: 0.6rem;
     background: linear-gradient(#00a2ff, $primary-color) $color-pressed;
     transition: 0.2s;
   }
