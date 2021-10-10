@@ -46,7 +46,6 @@ function CreateCard({ id, title, description, user, time }) {
             setData(data);
         }
     };
-    console.log(this);
 }
 
 

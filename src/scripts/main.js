@@ -85,6 +85,7 @@ function render(data) {
 
   // const cardContainerDone = document.querySelector(".column-progress__card-container")
   cardContainerTodo.textContent = ''
+  cardContainerProgress.textContent = ''
   data.forEach((item) => {
     if (item.classeCard === "todo") {
       new CreateCard(item).printCard(cardContainerTodo);
