@@ -1,7 +1,7 @@
 {
   "name": "SimpleNote",
   "version": "1.0.0",
-  "description": "",
+  "description": "Create a simplified copy of the popular Trello website.\r The application is under development.",
   "main": "index.js",
   "scripts": {
     "watch": "parcel ./src/index.html"
