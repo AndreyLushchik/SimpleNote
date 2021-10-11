@@ -1,10 +1,12 @@
 "use strict";
-import { renderTime } from "./components_js/clock.js";
-import { getUsers, setData, getData } from "./components_js/API.js";
-import { TodoStorage, CreateCard } from "./components_js/Template.js";
+import { renderTime } from "./components/clock.js";
+import { getUsers, setData, getData } from "./components/API.js";
+import { TodoStorage, CreateCard } from "./components/Template.js";
 
-const data = getData();
-render(data);
+document.addEventListener('DOMContentLoaded', () => {
+  const data = getData()
+  render(data)
+})
 // modal
 
 const wrapper = document.querySelector(".wrapper");
