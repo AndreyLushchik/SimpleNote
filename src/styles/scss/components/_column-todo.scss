@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   background: $card-color;
-  opacity: 0.94;
   width: 35rem;
   border-radius: 0.5rem;
 
@@ -16,7 +15,6 @@
   &__card-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
     width: 100%;
   }
 
