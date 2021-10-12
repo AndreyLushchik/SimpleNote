@@ -4,7 +4,7 @@
   "description": "Create a simplified copy of the popular Trello website.\r The application is under development.",
   "main": "index.js",
   "scripts": {
-    "watch": "parcel ./src/index.html"
+    "dev": "parcel ./src/index.html"
   },
   "repository": {
     "type": "git",

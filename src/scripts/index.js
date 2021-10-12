@@ -4,8 +4,8 @@
 
 document.addEventListener("DOMContentLoaded", app);
 function app(){
-const data = getData();
-render(data)
+const data =  getDataLocalStorage();
+renderCards(data)
 }
 
 // DOM elements
@@ -34,7 +34,7 @@ header.addEventListener("click",searchCard)
 function searchCard(event){
  if(event.target === searchBtn){
   search.classList.add("show-search")
-  const searchTitle = getData().filter(item => item.title === search.value)
+  const searchTitle =  getDataLocalStorage().filter(item => item.title === search.value)
   if(searchTitle.length === 0){
     search.value = ""
   } else if (searchTitle.length > 0){
@@ -42,7 +42,7 @@ function searchCard(event){
     cancelBtn.classList.add("show") 
     search.placeholder = "cancel"
     search.value = ""
-    render(searchTitle)
+    renderCards(searchTitle)
     search.classList.remove("show-search")
   } 
 } else if(event.target === cancelBtn) {
@@ -50,7 +50,7 @@ function searchCard(event){
   searchBtn.classList.remove("hidden")
   cancelBtn.classList.remove("show")
   search.placeholder = "search"
-  render(getData())
+  renderCards( getDataLocalStorage())
 }
 }
 
@@ -91,7 +91,7 @@ function CreatePopup({id,title,description,user}) {
   this.popupOpen = function () {
       createPopup.classList.add("open"),
       popupContent.classList.add("open-cont"),
-      this.listener(),
+      this.eventHandling(),
       getUsers()
 
   }
@@ -101,15 +101,15 @@ function CreatePopup({id,title,description,user}) {
 
   }
 
-    this.listener = function () {
+    this.eventHandling = function () {
     createPopup.addEventListener("click", (event) => {
       if (event.target === popupBody) {
         this.popupClose()
       } else if (event.target === popupBtnAdd) {
-        const data = getData().filter(item => item.id != popup.id)
-        setData(data)
-        createLocale();
-        render(getData());
+        const data =  getDataLocalStorage().filter(item => item.id != popup.id)
+        setDataLocalStorage(data)
+        fillLocalStorage();
+        renderCards( getDataLocalStorage());
         this.popupClose()
       } else if (event.target === popupBtnClose) {
         this.popupClose()
@@ -173,11 +173,11 @@ function CreateCard({id, title, description, user, time}) {
       if(event.target === cardContainerTodo ){
         event.target.append(e.target)
         console.log(e.target)
-        const  data = getData()
+        const  data =  getDataLocalStorage()
         data.map((item) =>{
           if(item.id == e.target.id){
             item.classeCard = "todo"
-            setData(data);
+            setDataLocalStorage(data);
             cardBtnEdit.classList.remove("hidden")
             cardBtnBack.classList.remove("show")
             cardBtnDelete.classList.remove("hidden")
@@ -188,12 +188,12 @@ function CreateCard({id, title, description, user, time}) {
       } else if(event.target === cardContainerProgress){
         event.target.append(e.target);
         console.log(e.target)
-        const data = getData();
+        const data =  getDataLocalStorage();
         data.map(item => {
           if (item.id == e.target.id) {
             item.classeCard = "progress"
           }
-          setData(data)
+          setDataLocalStorage(data)
           cardBtnEdit.classList.add("hidden")
           cardBtnBack.classList.add("show")
           cardBtnDelete.classList.add("hidden")
@@ -203,11 +203,11 @@ function CreateCard({id, title, description, user, time}) {
       } else if(event.target ===  cardContainerDone ){
         event.target.append(e.target);
         console.log(e.target)
-        const data = getData()
+        const data =  getDataLocalStorage()
         data.map(item => {
           if (item.id == e.target.id) {
             item.classeCard = "done"
-            setData(data)
+            setDataLocalStorage(data)
             cardBtnBack.classList.remove("show")
             cardBtnComlete.classList.remove("show")
             cardBtnDelete.classList.remove("hidden")
@@ -225,22 +225,22 @@ function CreateCard({id, title, description, user, time}) {
 }
 
 
-  this.listener = function () {
+  this.addListeners = function () {
     const card = document.querySelector(".card");
-    card.addEventListener("click", this.addListener);
+    card.addEventListener("click", this.eventHandling);
     card.addEventListener("dragstart",this.dragStart);
     card.addEventListener("dragend", this.dragEnd);
 };
 
-  this.addListener = function (event) {
+  this.eventHandling = function (event) {
     if (event.target === cardBtnProgress) {
       cardContainerProgress.append(card);
-      const data = getData();
+      const data =  getDataLocalStorage();
       data.map((item) => {
         if (item.id == card.id) {
           item.classeCard = "progress"
         }
-        setData(data);
+        setDataLocalStorage(data);
         cardBtnEdit.classList.add("hidden")
         cardBtnBack.classList.add("show")
         cardBtnDelete.classList.add("hidden")
@@ -249,21 +249,21 @@ function CreateCard({id, title, description, user, time}) {
       });
     } else if (event.target === cardBtnDelete) {
       card.remove();
-      const data = getData().filter((item) => item.id != card.id);
-      setData(data);
+      const data =  getDataLocalStorage().filter((item) => item.id != card.id);
+      setDataLocalStorage(data);
     } else if (event.target === cardBtnEdit) {
-      getData().map((item) => {
+      getDataLocalStorage().map((item) => {
         if (item.id == card.id) {
           new CreatePopup(item).popupOpen()
         }
       })
     } else if(event.target === cardBtnBack){
       cardContainerTodo.append(card);
-      const data = getData()
+      const data =  getDataLocalStorage()
       data.map(item => {
         if (item.id == card.id) {
           item.classeCard = "todo"
-          setData(data)
+          setDataLocalStorage(data)
           cardBtnEdit.classList.remove("hidden")
           cardBtnBack.classList.remove("show")
           cardBtnDelete.classList.remove("hidden")
@@ -273,12 +273,12 @@ function CreateCard({id, title, description, user, time}) {
       })
     } else if(event.target === cardBtnComlete){
       cardContainerDone.append(card);
-      const data = getData();
+      const data =  getDataLocalStorage();
       data.map(item => {
         if (item.id == card.id) {
           item.classeCard = "done"
         }
-        setData(data)
+        setDataLocalStorage(data)
         cardBtnBack.classList.remove("show")
         cardBtnComlete.classList.remove("show")
         cardBtnDelete.classList.remove("hidden")
@@ -296,23 +296,20 @@ function getUsers() {
     .then((response) => response.forEach(printUsers));
 }
 
-function printUsers({
-  name,
-  username
-}) {
+function printUsers({name,username}) {
   const listItem = document.createElement("option");
   const select = document.querySelector(".popup__user")
   listItem.textContent = `${name}, ${username}`;
   select.append(listItem);
 }
 
-// locale
+// Local Storage 
 
-function setData(data) {
+function setDataLocalStorage(data) {
   localStorage.setItem("todos", JSON.stringify(data));
 }
 
-function getData() {
+function getDataLocalStorage() {
   const data = JSON.parse(localStorage.getItem("todos"));
   if (data) {
     return data;
@@ -320,7 +317,7 @@ function getData() {
   return [];
 }
 
-function TodoStorage(title, description, user) {
+function TemplateLocalStorage(title, description, user) {
   this.id = Math.random();
   this.classeCard = "todo";
   this.title = title;
@@ -329,18 +326,18 @@ function TodoStorage(title, description, user) {
   this.time = new Date().toLocaleTimeString();
 }
 
-function createLocale() {
+function fillLocalStorage() {
   const popupTitle = document.querySelector(".popup__title");
   const popupDescription = document.querySelector(".popup__description");
   const select = document.querySelector(".popup__user")
-  const data = getData();
-  const todoStorage = new TodoStorage(
+  const data =  getDataLocalStorage();
+  const todoStorage = new TemplateLocalStorage(
     popupTitle.value,
     popupDescription.value,
     select.value
   );
   data.push(todoStorage);
-  setData(data);
+  setDataLocalStorage(data);
   popupTitle.value = "";
   popupDescription.value = "";
 
@@ -349,7 +346,7 @@ function createLocale() {
 
 // render
 
-function render(data) {
+function renderCards(data) {
  const cardContainerTodo = document.querySelector(".column-todo__card-container");
  const cardContainerProgress = document.querySelector(".column-progress__card-container");
  const cardContainerDone = document.querySelector(".column-done__card-container")
@@ -359,13 +356,13 @@ function render(data) {
   data.map((item) => {
     if (item.classeCard === "todo") {
       new CreateCard(item).printCard(cardContainerTodo);
-      new CreateCard(item).listener();
+      new CreateCard(item).addListeners();
     } else if (item.classeCard === "progress") {
       new CreateCard(item).printCard(cardContainerProgress);
-      new CreateCard(item).listener();
+      new CreateCard(item).addListeners();
     } else if (item.classeCard === "done"){
       new CreateCard(item).printCard(cardContainerDone);
-      new CreateCard(item).listener();
+      new CreateCard(item).addListeners();
     }
   });
 }
