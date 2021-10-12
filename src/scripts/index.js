@@ -9,6 +9,25 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 // modal
 
+function showTodo() {
+  const lenghtArray = getData().filter(obj => {
+    if (obj.classeCard === "todo") {
+      return obj
+    }
+  })
+  document.querySelector('.column-todo__counter').textContent = `${lenghtArray.length}`
+}
+
+
+function showTodoProgress() {
+  const lenghtArrayProgress = getData().filter(obj => {
+    if (obj.classeCard === "progress") {
+      return obj
+    }
+  })
+  document.querySelector('.column-progress__counter').textContent = `${lenghtArrayProgress.length}`
+}
+
 const wrapper = document.querySelector(".wrapper");
 
 function createPopup() {
@@ -67,6 +86,7 @@ const btnAdd = document.querySelector(".column-todo__btn-todo--add");
 
 wrapper.addEventListener("click", (e) => {
   if (e.target === btnAdd) {
+    showTodo()
     open();
   } else if (e.target.className === 'popup__btn-close') {
     close();
@@ -88,7 +108,9 @@ function render(data) {
   // const cardContainerDone = document.querySelector(".column-progress__card-container")
   cardContainerTodo.textContent = ''
   cardContainerProgress.textContent = ''
-  data.forEach((item) => {
+  showTodo()
+  showTodoProgress()
+  getData().forEach((item) => {
     if (item.classeCard === "todo") {
       new CreateCard(item).printCard(cardContainerTodo);
       new CreateCard(item).listener();
@@ -99,6 +121,8 @@ function render(data) {
   });
 
 }
+
+export{render, showTodo, showTodoProgress}
 
 // // Drag & drop
 

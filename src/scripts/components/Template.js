@@ -1,4 +1,6 @@
 import { getData, setData } from "./API";
+import {render, showTodo, showTodoProgress} from "./../index"
+
 
 function CreateCard({ id, title, description, user, time }) {
     this.template = function () {
@@ -33,6 +35,7 @@ function CreateCard({ id, title, description, user, time }) {
 
     this.addListener = function (event) {
         if (event.target === cardBtnProgress) {
+            render()
             cardContainerProgress.append(cardd);
             let data = getData();
             data.forEach((item) => {
@@ -41,6 +44,7 @@ function CreateCard({ id, title, description, user, time }) {
             });
             //setData(data);
         } else if (event.target === cardBtnDelete) {
+            render()
             cardd.remove();
             const data = getData().filter((item) => item.id != cardd.id);
             setData(data);
