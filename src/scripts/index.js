@@ -26,18 +26,18 @@ const cancelBtn = document.querySelector(".header__cancel-btn")
 
 // Even listeners
 
-header.addEventListener("click",searchCard)
-btnAdd.addEventListener("click", eventHandling)
+header.addEventListener("click",searchCards)
+btnAdd.addEventListener("click", createPopup)
 
 
 // Plugins app 
 
-function eventHandling(){
+function createPopup(){
   const emptyObj = {id: "",title: "",description: "",user: "",}
   new CreatePopup(emptyObj).popupOpen()
 }
 
-function searchCard(event){
+function searchCards(event){
  if(event.target === searchBtn){
   search.classList.add("show-search")
   const searchTitle =  getDataLocalStorage().filter(item => item.title === search.value)
