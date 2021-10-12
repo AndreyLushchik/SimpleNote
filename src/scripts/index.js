@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
   render(data)
 })
 // modal
-
 const wrapper = document.querySelector(".wrapper");
 
 function createPopup() {

@@ -38,6 +38,7 @@ function CreateCard({ id, title, description, user, time }) {
             data.forEach((item) => {
                 item.classeCard = "progress"
                 setData(data);
+                cardd.style.backgroundColor = 'SpringGreen';
             });
             //setData(data);
         } else if (event.target === cardBtnDelete) {
