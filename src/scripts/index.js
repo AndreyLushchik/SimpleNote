@@ -54,7 +54,7 @@ function searchCard(event){
 }
 }
 
-// plugins popup почистить!!!
+// plugins popup 
 
 function CreatePopup({id,title,description,user}) {
 
@@ -78,26 +78,30 @@ function CreatePopup({id,title,description,user}) {
             </div>
          </div>`
     );
-    wrapper.append(popup);
-    return popup;
+   return popup;
   }
+
   const createPopup = this.template()
-  const popup = document.querySelector(".popup")
+  wrapper.append(createPopup)
   const popupContent = document.querySelector(".popup__content")
   const popupBtnClose = document.querySelector(".popup__btn-close")
   const popupBody = document.querySelector(".popup__body")
   const popupBtnAdd = document.querySelector(".popup__btn-add")
 
   this.popupOpen = function () {
-      createPopup.classList.add("open"),
-      popupContent.classList.add("open-cont"),
+      wrapper.append(createPopup)
+      setTimeout(()=> createPopup.classList.add("open"),0)
+      setTimeout(()=> popupContent.classList.add("open-cont"),0)
       this.eventHandling(),
       getUsers()
 
   }
 
   this.popupClose = function () {
-      popup.remove()
+    setTimeout(()=> createPopup.classList.remove("open"),0)
+    setTimeout(()=> popupContent.classList.remove("open-cont"),0)
+    setTimeout(()=> createPopup.remove(),800)
+   
 
   }
 
@@ -106,7 +110,7 @@ function CreatePopup({id,title,description,user}) {
       if (event.target === popupBody) {
         this.popupClose()
       } else if (event.target === popupBtnAdd) {
-        const data =  getDataLocalStorage().filter(item => item.id != popup.id)
+        const data =  getDataLocalStorage().filter(item => item.id != createPopup.id)
         setDataLocalStorage(data)
         fillLocalStorage();
         renderCards( getDataLocalStorage());
@@ -160,76 +164,76 @@ function CreateCard({id, title, description, user, time}) {
     item.insertAdjacentHTML("afterbegin", card);
   };
 
-  this.dragStart = function(e){
-      cardContainerTodo.addEventListener("dragover", this.dragOver);
-      cardContainerTodo.addEventListener("drop",this.dragDrop);
-      cardContainerProgress.addEventListener("dragover",this.dragOver);
-      cardContainerProgress.addEventListener("drop",this.dragDrop);
-      cardContainerDone.addEventListener("dragover", this.dragOver);
-      cardContainerDone.addEventListener("drop",this.dragDrop)
-      console.log(e.target)
-      setTimeout(()=>  e.target.classList.add("hidden"),0)
-      this.dragDrop = function (event){
-      if(event.target === cardContainerTodo ){
-        event.target.append(e.target)
-        console.log(e.target)
-        const  data =  getDataLocalStorage()
-        data.map((item) =>{
-          if(item.id == e.target.id){
-            item.classeCard = "todo"
-            setDataLocalStorage(data);
-            cardBtnEdit.classList.remove("hidden")
-            cardBtnBack.classList.remove("show")
-            cardBtnDelete.classList.remove("hidden")
-            cardBtnComlete.classList.remove("show")
-            cardBtnProgress.classList.remove("hidden")
-          }
-        })
-      } else if(event.target === cardContainerProgress){
-        event.target.append(e.target);
-        console.log(e.target)
-        const data =  getDataLocalStorage();
-        data.map(item => {
-          if (item.id == e.target.id) {
-            item.classeCard = "progress"
-          }
-          setDataLocalStorage(data)
-          cardBtnEdit.classList.add("hidden")
-          cardBtnBack.classList.add("show")
-          cardBtnDelete.classList.add("hidden")
-          cardBtnComlete.classList.add("show")
-          cardBtnProgress.classList.add("hidden")
-        })
-      } else if(event.target ===  cardContainerDone ){
-        event.target.append(e.target);
-        console.log(e.target)
-        const data =  getDataLocalStorage()
-        data.map(item => {
-          if (item.id == e.target.id) {
-            item.classeCard = "done"
-            setDataLocalStorage(data)
-            cardBtnBack.classList.remove("show")
-            cardBtnComlete.classList.remove("show")
-            cardBtnDelete.classList.remove("hidden")
-          }
-        })
-      }
-    }
-   this.dragOver = function(event){
-   event.preventDefault()
-   } 
-}
+//   this.dragStart = function(e){
+//       cardContainerTodo.addEventListener("dragover", this.dragOver);
+//       cardContainerTodo.addEventListener("drop",this.dragDrop);
+//       cardContainerProgress.addEventListener("dragover",this.dragOver);
+//       cardContainerProgress.addEventListener("drop",this.dragDrop);
+//       cardContainerDone.addEventListener("dragover", this.dragOver);
+//       cardContainerDone.addEventListener("drop",this.dragDrop)
+//       console.log(e.target)
+//       setTimeout(()=>  e.target.classList.add("hidden"),0)
+//       this.dragDrop = function (event){
+//       if(event.target === cardContainerTodo ){
+//         event.target.append(e.target)
+//         console.log(e.target)
+//         const  data =  getDataLocalStorage()
+//         data.map((item) =>{
+//           if(item.id == e.target.id){
+//             item.classeCard = "todo"
+//             setDataLocalStorage(data);
+//             cardBtnEdit.classList.remove("hidden")
+//             cardBtnBack.classList.remove("show")
+//             cardBtnDelete.classList.remove("hidden")
+//             cardBtnComlete.classList.remove("show")
+//             cardBtnProgress.classList.remove("hidden")
+//           }
+//         })
+//       } else if(event.target === cardContainerProgress){
+//         event.target.append(e.target);
+//         console.log(e.target)
+//         const data =  getDataLocalStorage();
+//         data.map(item => {
+//           if (item.id == e.target.id) {
+//             item.classeCard = "progress"
+//           }
+//           setDataLocalStorage(data)
+//           cardBtnEdit.classList.add("hidden")
+//           cardBtnBack.classList.add("show")
+//           cardBtnDelete.classList.add("hidden")
+//           cardBtnComlete.classList.add("show")
+//           cardBtnProgress.classList.add("hidden")
+//         })
+//       } else if(event.target ===  cardContainerDone ){
+//         event.target.append(e.target);
+//         console.log(e.target)
+//         const data =  getDataLocalStorage()
+//         data.map(item => {
+//           if (item.id == e.target.id) {
+//             item.classeCard = "done"
+//             setDataLocalStorage(data)
+//             cardBtnBack.classList.remove("show")
+//             cardBtnComlete.classList.remove("show")
+//             cardBtnDelete.classList.remove("hidden")
+//           }
+//         })
+//       }
+//     }
+//    this.dragOver = function(event){
+//    event.preventDefault()
+//    } 
+// }
 
-  this.dragEnd = function(event){
-  event.target.classList.remove("hidden")
-}
+//   this.dragEnd = function(event){
+//   event.target.classList.remove("hidden")
+// }
 
 
   this.addListeners = function () {
     const card = document.querySelector(".card");
     card.addEventListener("click", this.eventHandling);
-    card.addEventListener("dragstart",this.dragStart);
-    card.addEventListener("dragend", this.dragEnd);
+    //card.addEventListener("dragstart",this.dragStart);
+    //card.addEventListener("dragend", this.dragEnd);
 };
 
   this.eventHandling = function (event) {
