@@ -28,7 +28,21 @@
 
   &__content {
     position: relative;
-    background: $primary-color;
+    background: linear-gradient(
+      to bottom left,
+      rgb(138, 138, 45),
+      rgb(127, 127, 41),
+      rgb(117, 116, 38),
+      rgb(106, 104, 34),
+      rgb(95, 93, 30),
+      rgb(84, 82, 26),
+      rgb(74, 71, 23),
+      rgb(63, 60, 19),
+      rgb(52, 49, 15),
+      rgb(41, 37, 11),
+      rgb(31, 26, 8),
+      rgb(20, 15, 4)
+    );
     color: black;
     max-width: 80rem;
     padding: 3em;
@@ -69,10 +83,7 @@
 
   // .popup__user
 
-  &__user {
-    font-style: 1.2em;
-    margin: 0 0 1em 0;
-  }
+  //&__user {}
 
   // .popup__btn-add
 
@@ -86,12 +97,12 @@
     text-align: center;
     text-decoration: none;
     user-select: none;
-    color: #000;
+    color: rgb(255, 255, 255);
     outline: none;
     border: 1px solid rgba(110, 121, 128, 0.8);
     border-top-color: rgba(0, 0, 0, 0.3);
     border-radius: 0.5rem;
-    background: #d2dfea linear-gradient($card-color, #f6f6f6);
+    background: $button-color;
   }
 
   &__btn-add:hover {
@@ -114,12 +125,12 @@
     text-align: center;
     text-decoration: none;
     user-select: none;
-    color: #000;
+    color: rgb(255, 255, 255);
     outline: none;
     border: 0.1rem solid rgba(110, 121, 128, 0.8);
     border-top-color: rgba(0, 0, 0, 0.3);
     border-radius: 0.5rem;
-    background: #d2dfea linear-gradient($card-color, #f6f6f6);
+    background: $button-color;
   }
 
   &__btn-close:hover {

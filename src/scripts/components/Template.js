@@ -36,8 +36,9 @@ function CreateCard({ id, title, description, user, time }) {
             cardContainerProgress.append(cardd);
             let data = getData();
             data.forEach((item) => {
-                item.classeCard = "progress"
-                setData(data);
+              item.classeCard = "progress";
+              cardd.style.backgroundColor = "DarkSeaGreen";
+              setData(data);
             });
             //setData(data);
         } else if (event.target === cardBtnDelete) {
