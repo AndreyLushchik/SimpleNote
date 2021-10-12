@@ -1,65 +1,338 @@
 "use strict";
 
+// App
 
-import { renderTime } from "./components/clock.js";
-import { getUsers, setData, getData } from "./components/API.js";
-import { TodoStorage, CreateCard } from "./components/Template.js";
-
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  const data = getData()
-  renderCards(data)
-})
+document.addEventListener("DOMContentLoaded", app);
+function app(){
+const data = getData();
+render(data)
+}
 
 // DOM elements
 
-const wrapper = document.querySelector(".wrapper");
+const wrapper = document.querySelector(".wrapper")
+const btnAdd = document.querySelector(".column-todo__btn-todo--add")
+const header = document.querySelector(".header__flex-container")
+const clock = document.querySelector(".header__clock")
+const search = document.querySelector(".header__search")
+const searchBtn = document.querySelector(".header__seach-btn")
+const cancelBtn = document.querySelector(".header__cancel-btn")
 
 
-// modal
+// clock
 
-const wrapper = document.querySelector(".wrapper");
-
-function createPopup() {
-  const popup = document.createElement("div");
-  popup.classList.add("popup");
-  popup.insertAdjacentHTML(
-    "afterbegin",
-    `<div class="popup__body">
-        <div class="popup__content">
-        <input type="text" placeholder="Title" class="popup__title">
-        <input type="textarea" placeholder="Text" class="popup__description">
-        <div class="popup__footer">
-        <select name="user" class="popup__user"></select>
-        <button class="popup__btn-add">add</button>
-         <button class="popup__btn-close">close</button>
-        </div>
-    </div>
- </div>`
-  );
-  wrapper.append(popup);
-  return popup;
+function renderTime() {
+  let time = new Date().toLocaleTimeString();
+  clock.innerText = time;
 }
-const modal = createPopup();
-function openPopup() {
-  const popupContent = document.querySelector(".popup__content");
-  modal.classList.add("open"),
-  popupContent.classList.add("open-cont"),
-  getUsers()
+setInterval(renderTime, 1000);
 
+// search 
+
+header.addEventListener("click",searchCard)
+
+function searchCard(event){
+ if(event.target === searchBtn){
+  search.classList.add("show-search")
+  const searchTitle = getData().filter(item => item.title === search.value)
+  if(searchTitle.length === 0){
+    search.value = ""
+  } else if (searchTitle.length > 0){
+    searchBtn.classList.add("hidden")
+    cancelBtn.classList.add("show") 
+    search.placeholder = "cancel"
+    search.value = ""
+    render(searchTitle)
+    search.classList.remove("show-search")
+  } 
+} else if(event.target === cancelBtn) {
+  search.classList.remove("show-search")
+  searchBtn.classList.remove("hidden")
+  cancelBtn.classList.remove("show")
+  search.placeholder = "search"
+  render(getData())
+}
 }
 
-function closePopup() {
- modal.classList.remove("open");
+// plugins popup почистить!!!
+
+function CreatePopup({id,title,description,user}) {
+
+  this.template = function () {
+    const popup = document.createElement("div");
+    popup.classList.add("popup");
+    popup.id = id
+    popup.insertAdjacentHTML(
+      "afterbegin",
+      `<div class="popup__body">
+                <div class="popup__content">
+                <input type="text" placeholder="Title" class="popup__title" value=${title}>
+                <input type="textarea" placeholder="Todo" class="popup__description" value=${description}>
+                <div class="popup__footer">
+                <select name="user" class="popup__user">
+                <option>${user}</option>
+                </select>
+                <button class="popup__btn-add">add</button>
+                 <button class="popup__btn-close">close</button>
+                </div>
+            </div>
+         </div>`
+    );
+    wrapper.append(popup);
+    return popup;
+  }
+  const createPopup = this.template()
+  const popup = document.querySelector(".popup")
+  const popupContent = document.querySelector(".popup__content")
+  const popupBtnClose = document.querySelector(".popup__btn-close")
+  const popupBody = document.querySelector(".popup__body")
+  const popupBtnAdd = document.querySelector(".popup__btn-add")
+
+  this.popupOpen = function () {
+      createPopup.classList.add("open"),
+      popupContent.classList.add("open-cont"),
+      this.listener(),
+      getUsers()
+
+  }
+
+  this.popupClose = function () {
+      popup.remove()
+
+  }
+
+    this.listener = function () {
+    createPopup.addEventListener("click", (event) => {
+      if (event.target === popupBody) {
+        this.popupClose()
+      } else if (event.target === popupBtnAdd) {
+        const data = getData().filter(item => item.id != popup.id)
+        setData(data)
+        createLocale();
+        render(getData());
+        this.popupClose()
+      } else if (event.target === popupBtnClose) {
+        this.popupClose()
+      }
+    })
+  }
+}
+ 
+//--------------------------------------------
+
+const someObj = {id: "",title: "",description: "",user: "",}
+btnAdd.addEventListener("click", () => {
+new CreatePopup(someObj).popupOpen()
+})
+
+
+// plugins cards 
+
+function CreateCard({id, title, description, user, time}) {
+
+  const card = document.querySelector(".card");
+  const cardContainerTodo = document.querySelector(".column-todo__card-container")
+  const cardContainerProgress = document.querySelector(".column-progress__card-container");
+  const cardContainerDone = document.querySelector(".column-done__card-container")
+  const cardBtnDelete = document.querySelector(".card__btn-delete");
+  const cardBtnComlete =document.querySelector(".card__btn-complete")
+  const cardBtnProgress = document.querySelector(".card__btn-progress");
+  const cardBtnEdit = document.querySelector(".card__btn-edit");
+  const cardBtnBack = document.querySelector(".card__btn-back")
+
+  this.template = function () {
+    return `<div class="card" draggable="true" id="${id}">
+    <h3 class="card__title">${title}</h3>
+    <input disabled type="textarea" placeholder="Todo" class="card__description" value=${description}>
+    <p class="card__user">${user}</p>
+    <button class="card__btn-edit">EDIT</button>
+    <button class="card__btn-back">BACK</button>
+    <button class="card__btn-delete">DELETE</button>
+    <button class="card__btn-complete">COMPLETE</button>
+    <button class="card__btn-progress">></button>
+    <div class="card__time">${time}</div>
+    </div>`;
+  }
+
+
+  this.printCard = function (item) {
+    const card = this.template();
+    item.insertAdjacentHTML("afterbegin", card);
+  };
+
+  this.dragStart = function(e){
+      cardContainerTodo.addEventListener("dragover", this.dragOver);
+      cardContainerTodo.addEventListener("drop",this.dragDrop);
+      cardContainerProgress.addEventListener("dragover",this.dragOver);
+      cardContainerProgress.addEventListener("drop",this.dragDrop);
+      cardContainerDone.addEventListener("dragover", this.dragOver);
+      cardContainerDone.addEventListener("drop",this.dragDrop)
+      console.log(e.target)
+      setTimeout(()=>  e.target.classList.add("hidden"),0)
+      this.dragDrop = function (event){
+      if(event.target === cardContainerTodo ){
+        event.target.append(e.target)
+        console.log(e.target)
+        const  data = getData()
+        data.map((item) =>{
+          if(item.id == e.target.id){
+            item.classeCard = "todo"
+            setData(data);
+            cardBtnEdit.classList.remove("hidden")
+            cardBtnBack.classList.remove("show")
+            cardBtnDelete.classList.remove("hidden")
+            cardBtnComlete.classList.remove("show")
+            cardBtnProgress.classList.remove("hidden")
+          }
+        })
+      } else if(event.target === cardContainerProgress){
+        event.target.append(e.target);
+        console.log(e.target)
+        const data = getData();
+        data.map(item => {
+          if (item.id == e.target.id) {
+            item.classeCard = "progress"
+          }
+          setData(data)
+          cardBtnEdit.classList.add("hidden")
+          cardBtnBack.classList.add("show")
+          cardBtnDelete.classList.add("hidden")
+          cardBtnComlete.classList.add("show")
+          cardBtnProgress.classList.add("hidden")
+        })
+      } else if(event.target ===  cardContainerDone ){
+        event.target.append(e.target);
+        console.log(e.target)
+        const data = getData()
+        data.map(item => {
+          if (item.id == e.target.id) {
+            item.classeCard = "done"
+            setData(data)
+            cardBtnBack.classList.remove("show")
+            cardBtnComlete.classList.remove("show")
+            cardBtnDelete.classList.remove("hidden")
+          }
+        })
+      }
+    }
+   this.dragOver = function(event){
+   event.preventDefault()
+   } 
 }
 
-// local storage
+  this.dragEnd = function(event){
+  event.target.classList.remove("hidden")
+}
 
-function createLocalStorage() {
-  const select = document.querySelector(".popup__user");
+
+  this.listener = function () {
+    const card = document.querySelector(".card");
+    card.addEventListener("click", this.addListener);
+    card.addEventListener("dragstart",this.dragStart);
+    card.addEventListener("dragend", this.dragEnd);
+};
+
+  this.addListener = function (event) {
+    if (event.target === cardBtnProgress) {
+      cardContainerProgress.append(card);
+      const data = getData();
+      data.map((item) => {
+        if (item.id == card.id) {
+          item.classeCard = "progress"
+        }
+        setData(data);
+        cardBtnEdit.classList.add("hidden")
+        cardBtnBack.classList.add("show")
+        cardBtnDelete.classList.add("hidden")
+        cardBtnComlete.classList.add("show")
+        cardBtnProgress.classList.add("hidden")
+      });
+    } else if (event.target === cardBtnDelete) {
+      card.remove();
+      const data = getData().filter((item) => item.id != card.id);
+      setData(data);
+    } else if (event.target === cardBtnEdit) {
+      getData().map((item) => {
+        if (item.id == card.id) {
+          new CreatePopup(item).popupOpen()
+        }
+      })
+    } else if(event.target === cardBtnBack){
+      cardContainerTodo.append(card);
+      const data = getData()
+      data.map(item => {
+        if (item.id == card.id) {
+          item.classeCard = "todo"
+          setData(data)
+          cardBtnEdit.classList.remove("hidden")
+          cardBtnBack.classList.remove("show")
+          cardBtnDelete.classList.remove("hidden")
+          cardBtnComlete.classList.remove("show")
+          cardBtnProgress.classList.remove("hidden")
+        }
+      })
+    } else if(event.target === cardBtnComlete){
+      cardContainerDone.append(card);
+      const data = getData();
+      data.map(item => {
+        if (item.id == card.id) {
+          item.classeCard = "done"
+        }
+        setData(data)
+        cardBtnBack.classList.remove("show")
+        cardBtnComlete.classList.remove("show")
+        cardBtnDelete.classList.remove("hidden")
+      })
+    }
+   }
+  }
+
+
+// fetch API
+
+function getUsers() {
+  fetch("https://jsonplaceholder.typicode.com/users")
+    .then((response) => response.json())
+    .then((response) => response.forEach(printUsers));
+}
+
+function printUsers({
+  name,
+  username
+}) {
+  const listItem = document.createElement("option");
+  const select = document.querySelector(".popup__user")
+  listItem.textContent = `${name}, ${username}`;
+  select.append(listItem);
+}
+
+// locale
+
+function setData(data) {
+  localStorage.setItem("todos", JSON.stringify(data));
+}
+
+function getData() {
+  const data = JSON.parse(localStorage.getItem("todos"));
+  if (data) {
+    return data;
+  }
+  return [];
+}
+
+function TodoStorage(title, description, user) {
+  this.id = Math.random();
+  this.classeCard = "todo";
+  this.title = title;
+  this.description = description;
+  this.user = user;
+  this.time = new Date().toLocaleTimeString();
+}
+
+function createLocale() {
   const popupTitle = document.querySelector(".popup__title");
   const popupDescription = document.querySelector(".popup__description");
+  const select = document.querySelector(".popup__user")
   const data = getData();
   const todoStorage = new TodoStorage(
     popupTitle.value,
@@ -70,38 +343,30 @@ function createLocalStorage() {
   setData(data);
   popupTitle.value = "";
   popupDescription.value = "";
+
 }
 
-const btnAdd = document.querySelector(".column-todo__btn-todo--add");
-
-wrapper.addEventListener("click", (e) => {
-  if (e.target === btnAdd) {
-    openPopup();
-  } else if (e.target.className === 'popup__btn-close') {
-    closePopup();
-  } else if (e.target.className === 'popup__body') {
-    closePopup();
-  } else if (e.target.className === "popup__btn-add") {
-    createLocalStorage();
-    renderCards(getData())
-    closePopup();
-  }
-});
 
 // render
 
-function renderCards(data) {
-  const cardContainerTodo = document.querySelector(".column-todo__card-container");
-  const cardContainerProgress = document.querySelector(".column-progress__card-container");
-  cardContainerTodo.textContent = ''
-  cardContainerProgress.textContent = ''
-  data.forEach((item) => {
+function render(data) {
+ const cardContainerTodo = document.querySelector(".column-todo__card-container");
+ const cardContainerProgress = document.querySelector(".column-progress__card-container");
+ const cardContainerDone = document.querySelector(".column-done__card-container")
+ cardContainerTodo.innerHTML = ""
+ cardContainerProgress.innerHTML = ""
+ cardContainerDone.innerHTML = ""
+  data.map((item) => {
     if (item.classeCard === "todo") {
       new CreateCard(item).printCard(cardContainerTodo);
       new CreateCard(item).listener();
     } else if (item.classeCard === "progress") {
       new CreateCard(item).printCard(cardContainerProgress);
       new CreateCard(item).listener();
+    } else if (item.classeCard === "done"){
+      new CreateCard(item).printCard(cardContainerDone);
+      new CreateCard(item).listener();
     }
   });
 }
+
