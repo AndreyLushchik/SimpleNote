@@ -8,6 +8,7 @@
 * Using component approach 
 * implementation of dragging cards
 * Responsive and adaptive layout
+* BEM
 
 
 
