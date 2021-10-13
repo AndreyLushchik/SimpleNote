@@ -9,9 +9,9 @@
   visibility: hidden;
   overflow-y: auto;
   overflow-x: hidden;
-  //transition: all 0.8s ease 0s;
+  transition: all 0.8s ease 0s;
 
-  &._open {
+  &.open {
     opacity: 1;
     visibility: visible;
     transition: all 0.8s ease 0s;
@@ -37,7 +37,8 @@
     opacity: 0;
     transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
 
-    &._open-cont {
+    &.open-cont {
+      transition: all 0.8s ease 0s;
       transform: perspective(600px) translate(0px, 0%) rotateX(0deg);
       opacity: 1;
     }
