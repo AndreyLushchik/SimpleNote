@@ -19,6 +19,6 @@
 * JavaScript
 * SCSS
 * HTML5
-* 
+ 
 
 
