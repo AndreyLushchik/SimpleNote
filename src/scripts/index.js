@@ -15,6 +15,34 @@ renderCards(data)
 setInterval(getCurrentTime, 1000);
 }
 
+//Counts
+function showTodo() {
+  const lenghtArrayTodo = getDataLocalStorage().filter(obj => {
+    if (obj.classeCard === "todo") {
+      return obj
+    }
+  })
+  document.querySelector('.column-todo__counter').textContent = `${lenghtArrayTodo.length}`
+}
+
+function showTodoProgress() {
+  const lenghtArrayProgress = getDataLocalStorage().filter(obj => {
+    if (obj.classeCard === "progress") {
+      return obj
+    }
+  })
+  document.querySelector('.column-progress__counter').textContent = `${lenghtArrayProgress.length}`
+}
+
+function showTodoDone() {
+  const lenghtArrayDone = getDataLocalStorage().filter(obj => {
+    if (obj.classeCard === "done") {
+      return obj
+    }
+  })
+  document.querySelector('.column-done__counter').textContent = `${lenghtArrayDone.length}`
+}
+
 // DOM elements
 
 const btnAdd = document.querySelector(".column-todo__btn-todo--add")
@@ -82,14 +110,17 @@ function fillLocalStorage() {
 
 }
 
-function renderCards(data) {
+function renderCards() {
   const cardContainerTodo = document.querySelector(".column-todo__card-container");
   const cardContainerProgress = document.querySelector(".column-progress__card-container");
   const cardContainerDone = document.querySelector(".column-done__card-container")
   cardContainerTodo.innerHTML = ""
   cardContainerProgress.innerHTML = ""
   cardContainerDone.innerHTML = ""
-  data.map((item) => {
+  showTodo()
+  showTodoProgress()
+  showTodoDone()
+  getDataLocalStorage().map((item) => {
     if (item.classeCard === "todo") {
       new CreateCard(item).printCard(cardContainerTodo);
       new CreateCard(item).addListeners();
@@ -103,4 +134,6 @@ function renderCards(data) {
   });
 }
 
-export{ printUsers,fillLocalStorage,renderCards}
+
+
+export{ printUsers,fillLocalStorage, renderCards, showTodoProgress, showTodoDone, showTodo}

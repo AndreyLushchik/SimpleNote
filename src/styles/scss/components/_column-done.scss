@@ -1,17 +1,30 @@
-.column-done {
+.column-done { 
   display: flex;
   flex-direction: column;
   background: $card-color;
+  opacity: 0.98;
   width: 35rem;
   border-radius: 0.5rem;
 
   &__title {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 3rem 1rem 3rem;
+    }
+
+  &__title--hero {
     font-size: 2rem;
     color: rgba(12, 30, 74, 1);
     font-family: "Roboto", sans-serif;
     margin-bottom: 1rem;
-    margin: 1rem 0 1rem 3.5rem;
+    
   }
+
+  &__counter { 
+    font-size: 2rem;
+    color: rgba(12, 30, 74, 1);
+    font-family: "Roboto", sans-serif;
+    }
 
   // &__card-container {
   // }

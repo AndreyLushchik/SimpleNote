@@ -1,6 +1,7 @@
 
 import{setDataLocalStorage,getDataLocalStorage} from "./local-storage.js";
 import{CreatePopup} from "./template-popup";
+import{renderCards, showTodoProgress, showTodoDone, showTodo} from "./../index";
 
 
 export function CreateCard({id, title, description, user, time}) {
@@ -53,8 +54,11 @@ export function CreateCard({id, title, description, user, time}) {
         cardBtnDelete.classList.add("hidden")
         cardBtnComlete.classList.add("show")
         cardBtnProgress.classList.add("hidden")
+        showTodo()
+        showTodoProgress()
       });
     } else if (event.target === cardBtnDelete) {
+      renderCards()
       card.remove();
       const data =  getDataLocalStorage().filter((item) => item.id != card.id);
       setDataLocalStorage(data);
@@ -67,6 +71,8 @@ export function CreateCard({id, title, description, user, time}) {
     } else if(event.target === cardBtnBack){
       cardContainerTodo.append(card);
       const data =  getDataLocalStorage()
+      showTodo()
+      showTodoProgress()
       data.map(item => {
         if (item.id == card.id) {
           item.classeCard = "todo"
@@ -81,6 +87,8 @@ export function CreateCard({id, title, description, user, time}) {
     } else if(event.target === cardBtnComlete){
       cardContainerDone.append(card);
       const data =  getDataLocalStorage();
+      showTodoDone()
+      showTodoProgress()
       data.map(item => {
         if (item.id == card.id) {
           item.classeCard = "done"
