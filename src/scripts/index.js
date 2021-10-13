@@ -24,7 +24,7 @@ const searchBtn = document.querySelector(".header__seach-btn")
 const cancelBtn = document.querySelector(".header__cancel-btn")
 
 
-// Even listeners
+// Event listeners
 
 header.addEventListener("click",searchCards)
 btnAdd.addEventListener("click", createPopup)
