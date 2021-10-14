@@ -32,6 +32,12 @@ btnAdd.addEventListener("click", createPopup)
 
 // Plugins app 
 
+const asynchronous = (ms)=> {
+  return new Promise(resolve => {
+  setTimeout(() => resolve(), ms)
+  })
+}
+
 function createPopup(){
   const emptyObj = {id: "",title: "",description: "",user: "",}
   new CreatePopup(emptyObj).popupOpen()
@@ -91,16 +97,19 @@ function renderCards(data) {
   cardContainerDone.innerHTML = ""
   data.map((item) => {
     if (item.classeCard === "todo") {
-      new CreateCard(item).printCard(cardContainerTodo);
-      new CreateCard(item).addListeners();
+      new CreateCard(item).printCard(cardContainerTodo)
+      new CreateCard(item).addListeners()
+     
     } else if (item.classeCard === "progress") {
-      new CreateCard(item).printCard(cardContainerProgress);
-      new CreateCard(item).addListeners();
+      new CreateCard(item).printCard(cardContainerProgress)
+      new CreateCard(item).addListeners()
+     
     } else if (item.classeCard === "done") {
-      new CreateCard(item).printCard(cardContainerDone);
-      new CreateCard(item).addListeners();
+      new CreateCard(item).printCard(cardContainerDone)
+      new CreateCard(item).addListeners()
+      
     }
   });
 }
 
-export{ printUsers,fillLocalStorage,renderCards}
+export{ printUsers,fillLocalStorage,renderCards,asynchronous}

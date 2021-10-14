@@ -7,9 +7,12 @@
     border: solid 0.2rem black;
     margin: 1em 0 1em 1em;
     padding: 0.8em;
-    &.hidden{
-      display: none;
-  }
+    cursor: pointer;
+    &:active{
+      cursor: grabbing;
+      
+      
+    }
 
   &__title {
     margin: 0.5em 0 0.5em;
