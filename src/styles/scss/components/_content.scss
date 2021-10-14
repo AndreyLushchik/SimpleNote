@@ -1,13 +1,10 @@
 .content {
-
-     &__flex-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        flex-basis: auto;
-        margin-top: 5em;
-        min-height: 100%;
-        }
+  &__flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-basis: auto;
+    margin-top: 5em;
+    min-height: 100%;
+  }
 }
-
-

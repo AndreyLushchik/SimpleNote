@@ -13,5 +13,16 @@
     font-family: "Roboto", sans-serif;
   }
 
-  //     &__card-container {}
+  .card {
+    background-color: #c6c9ca;
+    &__btn-delete {
+      display: none;
+    }
+    &__btn-edit {
+      display: none;
+    }
+    &__btn-progress{
+      display: none;
+    }
+  }
 }

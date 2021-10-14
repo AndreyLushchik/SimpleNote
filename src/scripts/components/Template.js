@@ -1,4 +1,4 @@
-import { getData, setData } from "./API";
+/*import { getData, setData } from "./API";
 
 function CreateCard({ id, title, description, user, time }) {
     this.template = function () {
@@ -37,7 +37,6 @@ function CreateCard({ id, title, description, user, time }) {
             let data = getData();
             data.forEach((item) => {
               item.classeCard = "progress";
-              cardd.style.backgroundColor = "DarkSeaGreen";
               setData(data);
             });
             //setData(data);
@@ -59,4 +58,4 @@ function TodoStorage(title, description, user) {
     this.time = new Date().toLocaleTimeString();
 }
 
-export { TodoStorage, CreateCard }
+export { TodoStorage, CreateCard }*/

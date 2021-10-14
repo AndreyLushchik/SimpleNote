@@ -13,8 +13,7 @@
     margin: 1rem 0 1rem 3.5rem;
   }
 
-  // &__card-container {
-  // }
+  // &__card-container {}
 
   &__btn-done--delete {
     position: relative;
@@ -47,4 +46,21 @@
       color: rgb(255, 255, 255);
     }
   }
+
+  .card {
+    background-color: #decc94;
+    &__btn-complete {
+      display: none;
+    }
+    &__btn-edit {
+      display: none;
+    }
+    &__btn-back {
+      display: none;
+    }
+    &__btn-progress{
+      display: none;
+    }
+  }
 }
+

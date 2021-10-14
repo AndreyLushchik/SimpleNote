@@ -1,12 +1,14 @@
 .card {
-    width: 30rem;
-    overflow-wrap: break-word;
-    min-height: 10em;
-    background: #ffff;
-    border-radius: 1em;
-    border: solid 0.2rem black;
-    margin: 1em 0 1em 1em;
-    padding: 0.8em;
+  width: 30rem;
+  overflow-wrap: break-word;
+  min-height: 10em;
+  border-radius: 1em;
+  border: solid 0.2rem black;
+  margin: 1em 0 1em 1em;
+  padding: 0.8em;
+  /*&.hidden {
+    display: none;
+  }*/
 
   &__title {
     margin: 0.5em 0 0.5em;
@@ -38,7 +40,11 @@
     border-radius: 0.6rem;
     background: $color-pressed;
     transition: 0.2s;
+    /*&.hidden {
+      display: none;
+    }*/
   }
+
   &__btn-edit:hover {
     @include hover-button;
   }
@@ -58,11 +64,54 @@
     border-radius: 0.6rem;
     background: $color-pressed;
     transition: 0.2s;
+    /*&.hidden {
+      display: none;
+    }*/
   }
   &__btn-delete:hover {
     @include hover-button;
   }
   &__btn-delete:active {
+    @include active-button;
+  }
+
+  &__btn-back {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: 0.1em 0.8em;
+    outline: none;
+    border-width: 0.2rem 0;
+    border-style: solid none;
+    border-color: $color-pressed;
+    border-radius: 0.6rem;
+    background: $color-pressed;
+    transition: 0.2s;
+  }
+  &__btn-back:hover {
+    @include hover-button;
+  }
+  &__btn-back:active {
+    @include active-button;
+  }
+
+  &__btn-complete {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: 0.1em 0.8em;
+    outline: none;
+    border-width: 0.2rem 0;
+    border-style: solid none;
+    border-color: $color-pressed;
+    border-radius: 0.6rem;
+    background: $color-pressed;
+    transition: 0.2s;
+  }
+  &__btn-complete:hover {
+    @include hover-button;
+  }
+  &__btn-complete:active {
     @include active-button;
   }
 
@@ -78,6 +127,9 @@
     border-radius: 0.6rem;
     background: $color-pressed;
     transition: 0.2s;
+    /*&.hidden {
+      display: none;
+    }*/
   }
   &__btn-progress:hover {
     @include hover-button;

@@ -49,4 +49,14 @@
       color: rgb(255, 255, 255);
     }
   }
+
+  .card {
+    background-color: rgb(255, 255, 255);
+    &__btn-back {
+      display: none;
+    }
+    &__btn-complete {
+      display: none;
+    }
+  }
 }

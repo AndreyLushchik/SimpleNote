@@ -1,246 +1,106 @@
 "use strict";
-import { renderTime } from "./components/clock.js";
-import { getUsers, setData, getData } from "./components/API.js";
-import { TodoStorage, CreateCard } from "./components/Template.js";
 
-document.addEventListener('DOMContentLoaded', () => {
-  const data = getData()
-  render(data)
-})
-// modal
+import{getCurrentTime} from "./components/clock.js";
+import{CreatePopup} from "./components/template-popup";
+import{setDataLocalStorage,getDataLocalStorage} from "./components/local-storage.js";
+import{TemplateLocalStorage} from "./components/template-storage.js";
+import{CreateCard} from "./components/template-card.js";
 
-const wrapper = document.querySelector(".wrapper");
+// App
 
-function createPopup() {
-  const popupp = document.createElement("div");
-  popupp.classList.add("popup");
-  popupp.insertAdjacentHTML(
-    "afterbegin",
-    `<div class="popup__body">
-        <div class="popup__content">
-        <input type="text" placeholder="Title" class="popup__title">
-        <input type="textarea" placeholder="Text" class="popup__description">
-        <div class="popup__footer">
-        <select name="user" class="popup__user"></select>
-        <button class="popup__btn-add">add</button>
-         <button class="popup__btn-close">close</button>
-        </div>
-    </div>
- </div>`
-  );
-  wrapper.append(popupp);
-  return popupp;
-}
-const modal = createPopup();
-function open() {
-  const popupContent = document.querySelector(".popup__content");
-  return (
-    modal.classList.add("_open"),
-    popupContent.classList.add("_open-cont"),
-    getUsers()
-  );
+document.addEventListener("DOMContentLoaded", app);
+function app(){
+const data =  getDataLocalStorage();
+renderCards(data)
+setInterval(getCurrentTime, 1000);
 }
 
-function close() {
-  return modal.classList.remove("_open");
+// DOM elements
+
+const btnAdd = document.querySelector(".column-todo__btn-todo--add")
+const header = document.querySelector(".header__flex-container")
+const search = document.querySelector(".header__search")
+const searchBtn = document.querySelector(".header__seach-btn")
+const cancelBtn = document.querySelector(".header__cancel-btn")
+
+
+// Even listeners
+
+header.addEventListener("click",searchCards)
+btnAdd.addEventListener("click", createPopup)
+
+
+// Plugins app 
+
+function createPopup(){
+  const emptyObj = {id: "",title: "",description: "",user: "",}
+  new CreatePopup(emptyObj).popupOpen()
 }
 
-// locale
-function createLocale() {
-  const select = document.querySelector(".popup__user");
-  let popupTitle = document.querySelector(".popup__title");
-  let popupDescription = document.querySelector(".popup__description");
-  const data = getData();
-  const todoStorage = new TodoStorage(
-    popupTitle.value,
-    popupDescription.value,
-    select.value
-  );
+function searchCards(event){
+ if(event.target === searchBtn){
+  search.classList.add("show-search")
+  const searchTitle =  getDataLocalStorage().filter(item => item.title === search.value)
+  if(searchTitle.length === 0){
+    search.value = ""
+  } else if (searchTitle.length > 0){
+    searchBtn.classList.add("hidden")
+    cancelBtn.classList.add("show") 
+    search.placeholder = "cancel"
+    search.value = ""
+    renderCards(searchTitle)
+    search.classList.remove("show-search")
+  } 
+} else if(event.target === cancelBtn) {
+  search.classList.remove("show-search")
+  searchBtn.classList.remove("hidden")
+  cancelBtn.classList.remove("show")
+  search.placeholder = "search"
+  renderCards( getDataLocalStorage())
+}
+}
+
+
+function printUsers({name,username}) {
+  const listItem = document.createElement("option");
+  const select = document.querySelector(".popup__user")
+  listItem.textContent = `${name}, ${username}`;
+  select.append(listItem);
+}
+
+
+function fillLocalStorage() {
+  const popupTitle = document.querySelector(".popup__title");
+  const popupDescription = document.querySelector(".popup__description");
+  const select = document.querySelector(".popup__user")
+  const data = getDataLocalStorage();
+  const todoStorage = new TemplateLocalStorage(popupTitle.value, popupDescription.value,select.value);
   data.push(todoStorage);
-  setData(data);
+  setDataLocalStorage(data);
   popupTitle.value = "";
   popupDescription.value = "";
-  //render(data);
+
 }
 
-const btnAdd = document.querySelector(".column-todo__btn-todo--add");
-
-wrapper.addEventListener("click", (e) => {
-  if (e.target === btnAdd) {
-    open();
-  } else if (e.target.className === 'popup__btn-close') {
-    close();
-  } else if (e.target.className === 'popup__body') {
-    close();
-  } else if (e.target.className === "popup__btn-add") {
-    createLocale();
-    render(getData())
-    close();
-  }
-});
-
-// render
-
-function render(data) {
+function renderCards(data) {
   const cardContainerTodo = document.querySelector(".column-todo__card-container");
   const cardContainerProgress = document.querySelector(".column-progress__card-container");
-
-  // const cardContainerDone = document.querySelector(".column-progress__card-container")
-  cardContainerTodo.textContent = ''
-  cardContainerProgress.textContent = ''
-  data.forEach((item) => {
+  const cardContainerDone = document.querySelector(".column-done__card-container")
+  cardContainerTodo.innerHTML = ""
+  cardContainerProgress.innerHTML = ""
+  cardContainerDone.innerHTML = ""
+  data.map((item) => {
     if (item.classeCard === "todo") {
       new CreateCard(item).printCard(cardContainerTodo);
-      new CreateCard(item).listener();
+      new CreateCard(item).addListeners();
     } else if (item.classeCard === "progress") {
       new CreateCard(item).printCard(cardContainerProgress);
-      new CreateCard(item).listener();
+      new CreateCard(item).addListeners();
+    } else if (item.classeCard === "done") {
+      new CreateCard(item).printCard(cardContainerDone);
+      new CreateCard(item).addListeners();
     }
   });
-
 }
 
-// // Drag & drop
-
-// function dragStart() {
-//   console.log("ffff");
-// }
-
-// function dragEnd() {
-//   console.log("qqq");
-// }
-
-// //-------------------------------------------------------
-// карточка
-
-// const cardContainer = document.querySelector(".column-todo__card-container--todo")
-
-//   function CreateCard (title,description,user, time){
-//     this.title = title,
-//     this.description = description,
-//     this.user = user,
-
-//     this.time = time,
-
-//     this.init =function(){
-//       const cardItem = this.template()
-//       cardContainer.insertAdjacentHTML("afterbegin", cardItem)
-
-//     }
-//      this.template = function(){
-//      return `<div class="card">
-//       <input type="text" class="card__title">${this.title}
-//       <input type="textarea" class="card__description">
-//       <p class="card__user">${this.user}</p>
-//       <button class="card__btn-edit">EDIT</button>
-//       <button class="card__btn-delete">DELETE</button>
-//       <button class="card__btn-progress">></button>
-//       <div class="card__time">${this.time}</div>
-//    </div>`
-//     }
-
-// }
-// let cardTime = new Date().toLocaleTimeString()
-
-// function card (){
-// new CreateCard("job", "wed-developer","Sergey",cardTime).init()
-// }
-
-// модалка
-
-// const popup = document.querySelector(".popup")
-// const popupContent = document.querySelector(".popup__content")
-
-// const body = document.querySelector("body")
-
-// const lockPadding = document.querySelector(".lock-padding")
-
-// function openPopup (){
-//  popup.classList.add("_open")
-//   popupContent.classList.add("_open-cont")
-// }
-
-//btnAdd.addEventListener("click", open)
-
-//-------------------------------------------------------------------
-
-// function CreateCard({id, title,description, user, time}) {
-
-//   const cardContainerTodo = document.querySelector(".column-todo__card-container--todo")
-//   const cardContainerProgress = document.querySelector(".column-progress__card-container--progress")
-//   const cardContainerDone = document.querySelector(".column-progress__card-container--done")
-
-//   this.template = function () {
-//       `<div class="card" draggable="true" id="${id}">
-//        <h3 class="card__title">${title}</h3>
-//        <p class="card__description">${description}</p>
-//        <p class="card__user">${user}</p>
-//        <button class="card__btn-edit">EDIT</button>
-//        <button class="card__btn-delete">DELETE</button>
-//        <button class="card__btn-progress">></button>
-//        <div class="card__time">${time}</div>
-//        </div>`
-//   }
-
-//   //const cardBtnDelete = document.querySelector(".card__btn-delete")
-//   //const cardBtnProgress = document.querySelector(".card__btn-progress")
-//   //const cardBtnEdit = document.querySelector(".card__btn-edit")
-
-//   this.printCardTodo = function () {
-//       const card = this.template()
-//       cardContainerTodo.insertAdjacentHTML("afterbegin", card)
-//   }
-
-//   this.printCardProgress = function () {
-//       const card = this.template()
-//       cardContainerProgress.insertAdjacentHTML("afterbegin", card)
-//   }
-
-//   this.printCardDone = function () {
-//       const card = this.template()
-//       cardContainerDone.insertAdjacentHTML("afterbegin", card)
-//   }
-
-//   }
-
-// function createCard ({id,title, description, user, time}){
-// const cardContainerTodo = document.querySelector(".column-todo__card-container--todo")
-// const cardContainerProgress = document.querySelector(".column-progress__card-container--progress")
-// cardContainerTodo.insertAdjacentHTML("afterbegin",
-// `<div class="card" draggable="true" id="${id}">
-//       <h3 class="card__title">${title}</h3>
-//       <p class="card__description">${description}</p>
-//       <p class="card__user">${user}</p>
-//       <button class="card__btn-edit">EDIT</button>
-//       <button class="card__btn-delete">DELETE</button>
-//       <button class="card__btn-progress">></button>
-//       <div class="card__time">${time}</div>
-//    </div>`)
-//    const card = document.querySelector(".card")
-//    const cardBtnDelete = document.querySelector(".card__btn-delete")
-//    const cardBtnProgress = document.querySelector(".card__btn-progress")
-//    const cardBtnEdit = document.querySelector(".card__btn-edit")
-
-//    card.addEventListener("dragstart",dragStart)
-//    card.addEventListener("dragend",dragEnd)
-//    card.addEventListener("click", (e) => {
-//     if(e.target === cardBtnDelete){
-//     card.remove()
-//     const data = getData().filter((todo) => todo.id != card.id);
-//     setData(data);
-//     } else if (e.target === cardBtnProgress){
-//       cardContainerProgress.append(card)
-//       const a = card.className = "aaa"
-//       //createLocale(a)
-
-//       }
-//     })
-//     return cardContainerTodo
-//   }
-
-// const modal = createPopup()
-//  const popupContent = document.querySelector(".popup__content")
-//  const popupBtnClose = document.querySelector(".popup__btn-close")
-//  const popupBody = document.querySelector(".popup__body")
-//  const select = document.querySelector(".popup__user")
-//  const popupBtnAdd = document.querySelector(".popup__btn-add")
+export{ printUsers,fillLocalStorage,renderCards}

@@ -39,6 +39,31 @@
       font-size: 1.6em;
       color: #ffff;
     }
+    &.hidden {
+      display: none;
+    }
+  }
+
+  &__cancel-btn {
+    display: none;
+    border: none;
+    outline: none;
+    background: transparent;
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    left: 10px;
+    cursor: pointer;
+
+    &::before {
+      content: "\f00d";
+      font-family: FontAwesome;
+      font-size: 16px;
+      color: #ffff;
+    }
+    &.show {
+      display: block;
+    }
   }
 
   &__clock {
