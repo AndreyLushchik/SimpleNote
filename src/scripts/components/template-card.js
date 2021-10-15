@@ -18,7 +18,7 @@ export function CreateCard({id, title, description, user, time}) {
   this.template = function () {
     return `<div class="card" draggable="true" id="${id}">
     <h3 class="card__title">${title}</h3>
-    <input disabled type="textarea" placeholder="Todo" class="card__description" value=${description}>
+    <p class="card__description">${description}</p>
     <p class="card__user">${user}</p>
     <button class="card__btn-edit">EDIT</button>
     <button class="card__btn-back">BACK</button>
@@ -48,11 +48,11 @@ export function CreateCard({id, title, description, user, time}) {
           item.classeCard = "progress"
         }
         setDataLocalStorage(data);
-        cardBtnEdit.classList.add("hidden")
-        cardBtnBack.classList.add("show")
-        cardBtnDelete.classList.add("hidden")
-        cardBtnComlete.classList.add("show")
-        cardBtnProgress.classList.add("hidden")
+        //cardBtnEdit.classList.add("hidden")
+        //cardBtnBack.classList.add("show")
+        //cardBtnDelete.classList.add("hidden")
+        //cardBtnComlete.classList.add("show")
+        //cardBtnProgress.classList.add("hidden")
       });
     } else if (event.target === cardBtnDelete) {
       card.remove();
@@ -71,11 +71,11 @@ export function CreateCard({id, title, description, user, time}) {
         if (item.id == card.id) {
           item.classeCard = "todo"
           setDataLocalStorage(data)
-          cardBtnEdit.classList.remove("hidden")
-          cardBtnBack.classList.remove("show")
-          cardBtnDelete.classList.remove("hidden")
-          cardBtnComlete.classList.remove("show")
-          cardBtnProgress.classList.remove("hidden")
+          //cardBtnEdit.classList.remove("hidden")
+          //cardBtnBack.classList.remove("show")
+          //cardBtnDelete.classList.remove("hidden")
+          //cardBtnComlete.classList.remove("show")
+          //cardBtnProgress.classList.remove("hidden")
         }
       })
     } else if(event.target === cardBtnComlete){
@@ -86,9 +86,9 @@ export function CreateCard({id, title, description, user, time}) {
           item.classeCard = "done"
         }
         setDataLocalStorage(data)
-        cardBtnBack.classList.remove("show")
-        cardBtnComlete.classList.remove("show")
-        cardBtnDelete.classList.remove("hidden")
+        //cardBtnBack.classList.remove("show")
+        //cardBtnComlete.classList.remove("show")
+        //cardBtnDelete.classList.remove("hidden")
       })
     }
    }

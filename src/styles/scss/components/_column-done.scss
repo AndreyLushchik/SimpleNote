@@ -7,14 +7,13 @@
 
   &__title {
     font-size: 2rem;
-    color: rgba(12, 30, 74, 1);
+    color: rgb(255, 255, 255);
     font-family: "Roboto", sans-serif;
     margin-bottom: 1rem;
     margin: 1rem 0 1rem 3.5rem;
   }
 
-  // &__card-container {
-  // }
+  // &__card-container {}
 
   &__btn-done--delete {
     position: relative;
@@ -24,12 +23,12 @@
     width: 15rem;
     font-family: "Roboto", sans-serif;
     font-size: 1.6rem;
-    color: #000;
+    color: rgb(255, 255, 255);
     outline: none;
     border: 1px solid rgba(110, 121, 128, 0.8);
     border-top-color: rgba(0, 0, 0, 0.3);
     border-radius: 0.5rem;
-    background: #d2dfea linear-gradient($primary-color, #bce0ec);
+    background: $button-color;
 
     &:hover {
       @include hover-button;
@@ -44,7 +43,24 @@
       position: absolute;
       left: 1rem;
       font-family: FontAwesome;
-      color: rgba(92, 95, 102, 1);
+      color: rgb(255, 255, 255);
+    }
+  }
+
+  .card {
+    background-color: #decc94;
+    &__btn-complete {
+      display: none;
+    }
+    &__btn-edit {
+      display: none;
+    }
+    &__btn-back {
+      display: none;
+    }
+    &__btn-progress{
+      display: none;
     }
   }
 }
+
