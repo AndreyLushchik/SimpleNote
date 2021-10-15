@@ -4,6 +4,7 @@
   background: $card-color;
   width: 35rem;
   border-radius: 0.5rem;
+  
 
   &__title {
     font-size: 2rem;
@@ -13,7 +14,14 @@
     margin: 1rem 0 1rem 3.5rem;
   }
 
-  // &__card-container {}
+
+   &__card-container {
+     min-height: 30px;
+     &.drag-enter{
+       min-height: 30rem;
+     }
+   }
+
 
   &__btn-done--delete {
     position: relative;

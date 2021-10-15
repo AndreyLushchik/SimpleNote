@@ -1,6 +1,6 @@
 "use strict";
 
-import{getCurrentTime} from "./components/clock.js";
+import{Clock} from "./components/Clock.js";
 import{CreatePopup} from "./components/template-popup";
 import{setDataLocalStorage,getDataLocalStorage} from "./components/local-storage.js";
 import{TemplateLocalStorage} from "./components/template-storage.js";
@@ -12,7 +12,8 @@ document.addEventListener("DOMContentLoaded", app);
 function app(){
 const data =  getDataLocalStorage();
 renderCards(data)
-setInterval(getCurrentTime, 1000);
+let clock = new Clock()
+clock.start()
 }
 
 // DOM elements
@@ -24,13 +25,19 @@ const searchBtn = document.querySelector(".header__seach-btn")
 const cancelBtn = document.querySelector(".header__cancel-btn")
 
 
-// Even listeners
+// Event listeners
 
 header.addEventListener("click",searchCards)
 btnAdd.addEventListener("click", createPopup)
 
 
 // Plugins app 
+
+const asynchronous = (ms)=> {
+  return new Promise(resolve => {
+  setTimeout(() => resolve(), ms)
+  })
+}
 
 function createPopup(){
   const emptyObj = {id: "",title: "",description: "",user: "",}
@@ -91,16 +98,19 @@ function renderCards(data) {
   cardContainerDone.innerHTML = ""
   data.map((item) => {
     if (item.classeCard === "todo") {
-      new CreateCard(item).printCard(cardContainerTodo);
-      new CreateCard(item).addListeners();
+      new CreateCard(item).printCard(cardContainerTodo)
+      new CreateCard(item).addListeners()
+     
     } else if (item.classeCard === "progress") {
-      new CreateCard(item).printCard(cardContainerProgress);
-      new CreateCard(item).addListeners();
+      new CreateCard(item).printCard(cardContainerProgress)
+      new CreateCard(item).addListeners()
+     
     } else if (item.classeCard === "done") {
-      new CreateCard(item).printCard(cardContainerDone);
-      new CreateCard(item).addListeners();
+      new CreateCard(item).printCard(cardContainerDone)
+      new CreateCard(item).addListeners()
+      
     }
   });
 }
 
-export{ printUsers,fillLocalStorage,renderCards}
+export{ printUsers,fillLocalStorage,renderCards,asynchronous}

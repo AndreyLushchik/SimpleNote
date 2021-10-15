@@ -13,7 +13,15 @@
     font-family: "Roboto", sans-serif;
   }
 
-  .card {
+
+       &__card-container {
+           min-height: 65px;
+           &.drag-enter{
+            min-height: 30rem;
+          }
+     }
+
+/*  .card {
     background-color: #c6c9ca;
     &__btn-delete {
       display: none;
@@ -25,4 +33,6 @@
       display: none;
     }
   }
+
 }
+*/

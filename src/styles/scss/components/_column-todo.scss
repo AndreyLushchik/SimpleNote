@@ -4,18 +4,24 @@
   background: $card-color;
   width: 35rem;
   border-radius: 0.5rem;
+ 
 
   &__title {
     font-size: 2rem;
     color: rgb(255, 255, 255);
     font-family: "Roboto", sans-serif;
     margin: 1rem 0 1rem 3.5rem;
+    
   }
 
   &__card-container {
     display: flex;
     flex-direction: column;
     width: 100%;
+    min-height: 30px;
+    &.drag-enter{
+      min-height: 30rem;
+    }
   }
 
   &__btn-todo--add {
