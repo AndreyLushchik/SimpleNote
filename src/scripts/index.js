@@ -1,6 +1,6 @@
 "use strict";
 
-import{getCurrentTime} from "./components/clock.js";
+import{Clock} from "./components/Clock.js";
 import{CreatePopup} from "./components/template-popup";
 import{setDataLocalStorage,getDataLocalStorage} from "./components/local-storage.js";
 import{TemplateLocalStorage} from "./components/template-storage.js";
@@ -12,7 +12,8 @@ document.addEventListener("DOMContentLoaded", app);
 function app(){
 const data =  getDataLocalStorage();
 renderCards(data)
-setInterval(getCurrentTime, 1000);
+let clock = new Clock()
+clock.start()
 }
 
 // DOM elements
