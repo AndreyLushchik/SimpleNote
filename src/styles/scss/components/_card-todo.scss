@@ -40,28 +40,21 @@
     outline: none;
     border-width: 0.2rem 0;
     border-style: solid none;
-    border-color: $primary-color #000 $card-color;
+    border-color: $color-pressed;
     border-radius: 0.6rem;
-    background: linear-gradient(#00a2ff, $primary-color) $color-pressed;
+    background: $color-pressed;
     transition: 0.2s;
-    &.hidden{
+    /*&.hidden {
       display: none;
+    }*/
   }
-  }
+
   &__btn-edit:hover {
     @include hover-button;
   }
   &__btn-edit:active {
     @include active-button;
   }
-
-  &__btn-back{
-    display: none;
-    &.show {
-        display:block;
-       
-    }
-}
 
   &__btn-delete {
     display: inline-block;
@@ -71,13 +64,13 @@
     outline: none;
     border-width: 0.2rem 0;
     border-style: solid none;
-    border-color: $primary-color #000 $card-color;
+    border-color: $color-pressed;
     border-radius: 0.6rem;
-    background: linear-gradient(#00a2ff, $primary-color) $color-pressed;
+    background: $color-pressed;
     transition: 0.2s;
-    &.hidden{
+    /*&.hidden {
       display: none;
-  }
+    }*/
   }
   &__btn-delete:hover {
     @include hover-button;
@@ -85,12 +78,46 @@
   &__btn-delete:active {
     @include active-button;
   }
-  &__btn-complete{
-    display: none;
-    &.show {
-        display: inline;
-    }
-}
+
+  &__btn-back {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: 0.1em 0.8em;
+    outline: none;
+    border-width: 0.2rem 0;
+    border-style: solid none;
+    border-color: $color-pressed;
+    border-radius: 0.6rem;
+    background: $color-pressed;
+    transition: 0.2s;
+  }
+  &__btn-back:hover {
+    @include hover-button;
+  }
+  &__btn-back:active {
+    @include active-button;
+  }
+
+  &__btn-complete {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: 0.1em 0.8em;
+    outline: none;
+    border-width: 0.2rem 0;
+    border-style: solid none;
+    border-color: $color-pressed;
+    border-radius: 0.6rem;
+    background: $color-pressed;
+    transition: 0.2s;
+  }
+  &__btn-complete:hover {
+    @include hover-button;
+  }
+  &__btn-complete:active {
+    @include active-button;
+  }
 
   &__btn-progress {
     display: inline-block;
@@ -100,19 +127,19 @@
     outline: none;
     border-width: 0.2rem 0;
     border-style: solid none;
-    border-color: $primary-color #000 $card-color;
+    border-color: $color-pressed;
     border-radius: 0.6rem;
-    background: linear-gradient(#00a2ff, $primary-color) $color-pressed;
+    background: $color-pressed;
     transition: 0.2s;
-    &.hidden{
+    /*&.hidden {
       display: none;
-    }
+    }*/
   }
   &__btn-progress:hover {
-    background: linear-gradient($primary-color, #00a2ff);
+    @include hover-button;
   }
   &__btn-progress:active {
-    background: linear-gradient($primary-color 20%, $color-pressed);
+    @include active-button;
   }
 
   &__time {

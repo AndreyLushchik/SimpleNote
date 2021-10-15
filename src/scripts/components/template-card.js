@@ -19,7 +19,7 @@ export function CreateCard({id, title, description, user, time}) {
     this.template = function () {
     return `<div class="card" draggable="true" id="${id}">
     <h3 class="card__title">${title}</h3>
-    <input disabled type="textarea" placeholder="Todo" class="card__description" value=${description}>
+    <p class="card__description">${description}</p>
     <p class="card__user">${user}</p>
     <button class="card__btn-edit">EDIT</button>
     <button class="card__btn-back">BACK</button>
@@ -147,3 +147,4 @@ export function CreateCard({id, title, description, user, time}) {
     event.target.style.display = "block"
      }
     }
+
