@@ -5,6 +5,7 @@ import { CreatePopup } from "./components/template-popup";
 import { setDataLocalStorage, getDataLocalStorage } from "./components/local-storage.js";
 import { TemplateLocalStorage } from "./components/template-storage.js";
 import { CreateCard } from "./components/template-card.js";
+import { printCounter } from './components/counter-todo.js';
 
 // App
 
@@ -96,6 +97,7 @@ function renderCards(data) {
   cardContainerTodo.innerHTML = ""
   cardContainerProgress.innerHTML = ""
   cardContainerDone.innerHTML = ""
+  printCounter()
   data.map((item) => {
     if (item.classeCard === "todo") {
       new CreateCard(item).printCard(cardContainerTodo)

@@ -1,7 +1,8 @@
 
-import { asynchronous, renderCards } from "../index.js";
+import { asynchronous, renderCards, todoCounter } from "../index.js";
 import { setDataLocalStorage, getDataLocalStorage } from "./local-storage.js";
 import { CreatePopup } from "./template-popup";
+import { printCounter } from './counter-todo.js';
 
 
 export function CreateCard({ id, title, description, user, time }) {
@@ -92,6 +93,7 @@ export function CreateCard({ id, title, description, user, time }) {
         cardBtnDelete.classList.remove("hidden")
         break;
     }
+    printCounter()
   }
 
   // drag drop
