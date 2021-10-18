@@ -13,6 +13,10 @@
     font-family: "Roboto", sans-serif;
   }
 
-  //     &__card-container {
-  //     }
+       &__card-container {
+           min-height: 65px;
+           &.drag-enter{
+            min-height: 30rem;
+          }
+     }
 }

@@ -7,9 +7,12 @@
     border: solid 0.2rem black;
     margin: 1em 0 1em 1em;
     padding: 0.8em;
-    &.hidden{
-      display: none;
-  }
+    cursor: pointer;
+    &:active{
+      cursor: grabbing;
+      
+      
+    }
 
   &__title {
     margin: 0.5em 0 0.5em;
@@ -41,9 +44,7 @@
     border-radius: 0.6rem;
     background: linear-gradient(#00a2ff, $primary-color) $color-pressed;
     transition: 0.2s;
-    &.hidden{
-      display: none;
-  }
+   
   }
   &__btn-edit:hover {
     @include hover-button;
@@ -53,11 +54,8 @@
   }
 
   &__btn-back{
-    display: none;
-    &.show {
-        display:block;
-       
-    }
+   
+  
 }
 
   &__btn-delete {
@@ -72,9 +70,7 @@
     border-radius: 0.6rem;
     background: linear-gradient(#00a2ff, $primary-color) $color-pressed;
     transition: 0.2s;
-    &.hidden{
-      display: none;
-  }
+
   }
   &__btn-delete:hover {
     @include hover-button;
@@ -83,10 +79,7 @@
     @include active-button;
   }
   &__btn-complete{
-    display: none;
-    &.show {
-        display: inline;
-    }
+ 
 }
 
   &__btn-progress {
@@ -101,9 +94,7 @@
     border-radius: 0.6rem;
     background: linear-gradient(#00a2ff, $primary-color) $color-pressed;
     transition: 0.2s;
-    &.hidden{
-      display: none;
-    }
+ 
   }
   &__btn-progress:hover {
     background: linear-gradient($primary-color, #00a2ff);
