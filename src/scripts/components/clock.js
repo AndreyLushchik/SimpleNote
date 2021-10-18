@@ -1,6 +1,7 @@
 
+// шаблон с методами получения актуального времени и вывода его на страницу в виде часов
 
-export class Clock{
+export class Clock {
     getTime(){
        this.time = new Date().toLocaleTimeString()
     }
