@@ -40,12 +40,14 @@
     outline: none;
     border-width: 0.2rem 0;
     border-style: solid none;
-    border-color: $primary-color #000 $card-color;
+    border-color: $color-pressed;
     border-radius: 0.6rem;
-    background: linear-gradient(#00a2ff, $primary-color) $color-pressed;
+    background: $color-pressed;
     transition: 0.2s;
    
   }
+
+  
   &__btn-edit:hover {
     @include hover-button;
   }
@@ -53,10 +55,12 @@
     @include active-button;
   }
 
+
   &__btn-back{
    
   
 }
+
 
   &__btn-delete {
     display: inline-block;
@@ -66,9 +70,9 @@
     outline: none;
     border-width: 0.2rem 0;
     border-style: solid none;
-    border-color: $primary-color #000 $card-color;
+    border-color: $color-pressed;
     border-radius: 0.6rem;
-    background: linear-gradient(#00a2ff, $primary-color) $color-pressed;
+    background: $color-pressed;
     transition: 0.2s;
 
   }
@@ -78,9 +82,8 @@
   &__btn-delete:active {
     @include active-button;
   }
-  &__btn-complete{
- 
-}
+
+  &__btn-complete
 
   &__btn-progress {
     display: inline-block;
@@ -90,17 +93,18 @@
     outline: none;
     border-width: 0.2rem 0;
     border-style: solid none;
-    border-color: $primary-color #000 $card-color;
+    border-color: $color-pressed;
     border-radius: 0.6rem;
-    background: linear-gradient(#00a2ff, $primary-color) $color-pressed;
+    background: $color-pressed;
     transition: 0.2s;
+
  
   }
   &__btn-progress:hover {
-    background: linear-gradient($primary-color, #00a2ff);
+    @include hover-button;
   }
   &__btn-progress:active {
-    background: linear-gradient($primary-color 20%, $color-pressed);
+    @include active-button;
   }
 
   &__time {

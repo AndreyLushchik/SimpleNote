@@ -8,10 +8,11 @@
 
   &__title {
     font-size: 2rem;
-    color: rgba(12, 30, 74, 1);
+    color: rgb(255, 255, 255);
     margin: 1rem 0 1rem 3.5rem;
     font-family: "Roboto", sans-serif;
   }
+
 
        &__card-container {
            min-height: 65px;
@@ -19,4 +20,18 @@
             min-height: 30rem;
           }
      }
+
+  .card {
+    background-color: #c6c9ca;
+    &__btn-delete {
+      display: none;
+    }
+    &__btn-edit {
+      display: none;
+    }
+    &__btn-progress{
+      display: none;
+    }
+  }
+
 }

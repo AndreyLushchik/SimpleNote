@@ -14,7 +14,6 @@ const data =  getDataLocalStorage();
 renderCards(data)
 let clock = new Clock()
 clock.start()
-
 }
 
 // DOM Elements
@@ -30,6 +29,7 @@ const cardContainerProgress = document.querySelector(".column-progress__card-con
 const cardContainerDone = document.querySelector(".column-done__card-container")
 
 // Event listeners
+
 
 header.addEventListener("click",searchCards)
 btnAdd.addEventListener("click", popupRender)
@@ -50,6 +50,7 @@ const cardBtnProgress = [
 
 // Card Button Done
 
+
 const cardBtnDone = [{id:"",class:"card__btn-delete",text:"delete",padding:"10px",background:"blue",}]
 
 // Popup Button 
@@ -69,11 +70,12 @@ const popupBtn = [
 
 // Plugins App 
 
-const asynchronous = (ms)=> {
+const asynchronous = (ms) => {
   return new Promise(resolve => {
-  setTimeout(() => resolve(), ms)
+    setTimeout(() => resolve(), ms)
   })
 }
+
 
 function popupSmallRender(){
 const popup = new PopupSmall({},"All todos will be deleted. Confirm?",[popupBtn])
@@ -84,33 +86,33 @@ popup.popupOpen()
 function popupRender(){
 const popup =  new Popup({})
 popup.popupOpen()
-}
 
-function searchCards(event){
- if(event.target === searchBtn){
-  search.classList.add("show-search")
-  const searchTitle =  getDataLocalStorage().filter(item => item.title === search.value)
-  if(searchTitle.length === 0){
-    search.value = ""
-  } else if (searchTitle.length > 0){
-    searchBtn.classList.add("hidden")
-    cancelBtn.classList.add("show") 
-    search.placeholder = "cancel"
-    search.value = ""
-    renderCards(searchTitle)
+
+function searchCards(event) {
+  if (event.target === searchBtn) {
+    search.classList.add("show-search")
+    const searchTitle = getDataLocalStorage().filter(item => item.title === search.value)
+    if (searchTitle.length === 0) {
+      search.value = ""
+    } else if (searchTitle.length > 0) {
+      searchBtn.classList.add("hidden")
+      cancelBtn.classList.add("show")
+      search.placeholder = "cancel"
+      search.value = ""
+      renderCards(searchTitle)
+      search.classList.remove("show-search")
+    }
+  } else if (event.target === cancelBtn) {
     search.classList.remove("show-search")
-  } 
-} else if(event.target === cancelBtn) {
-  search.classList.remove("show-search")
-  searchBtn.classList.remove("hidden")
-  cancelBtn.classList.remove("show")
-  search.placeholder = "search"
-  renderCards( getDataLocalStorage())
-}
+    searchBtn.classList.remove("hidden")
+    cancelBtn.classList.remove("show")
+    search.placeholder = "search"
+    renderCards(getDataLocalStorage())
+  }
 }
 
 
-function printUsers({name,username}) {
+function printUsers({ name, username }) {
   const listItem = document.createElement("option");
   const select = document.querySelector(".popup__user")
   listItem.textContent = `${name}, ${username}`;
@@ -168,6 +170,7 @@ function renderCards(data) {
  
 
 export{ printUsers,fillLocalStorage,renderCards,asynchronous,popupBtnNone,renderCounter}
+
 
 
 

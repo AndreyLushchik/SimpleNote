@@ -1,8 +1,36 @@
 @mixin hover-button {
-  background: linear-gradient($primary-color 20%, #00a2ff);
+  background: linear-gradient(
+    to bottom,
+    rgb(219, 152, 75),
+    rgb(213, 149, 72),
+    rgb(208, 146, 69),
+    rgb(202, 144, 66),
+    rgb(197, 141, 63),
+    rgb(191, 138, 60),
+    rgb(186, 135, 56),
+    rgb(180, 132, 53),
+    rgb(175, 129, 50),
+    rgb(169, 127, 47),
+    rgb(164, 124, 44),
+    rgb(158, 121, 41)
+  );
+  box-shadow: 0 -1px rgba(0, 0, 0, 0.4) inset;
 }
 
 @mixin active-button {
-    background: linear-gradient($primary-color 20%, $color-pressed);
-    box-shadow: 0 -1px rgba(255, 255, 255, 0.4) inset;
-  }
+  background: linear-gradient(
+    to top,
+    rgb(179, 96, 2),
+    rgb(166, 91, 6),
+    rgb(154, 86, 9),
+    rgb(141, 81, 13),
+    rgb(129, 76, 16),
+    rgb(116, 71, 20),
+    rgb(104, 66, 23),
+    rgb(91, 61, 27),
+    rgb(79, 56, 30),
+    rgb(66, 51, 34),
+    rgb(54, 46, 37),
+    rgb(41, 41, 41)
+  );
+}

@@ -1,21 +1,23 @@
 
+
 // шаблон с методами получения актуального времени и вывода его на страницу в виде часов
 
 export class Clock {
     getTime(){
        this.time = new Date().toLocaleTimeString()
+
     }
 
-    render(){
+    render() {
         this.getTime()
         const clock = document.querySelector(".header__clock")
         clock.innerText = this.time;
     }
-    start(){
+    start() {
         this.render()
-        setInterval(() => this.render() , 1000);
+        setInterval(() => this.render(), 1000);
     }
-    
+
 }
 
 
