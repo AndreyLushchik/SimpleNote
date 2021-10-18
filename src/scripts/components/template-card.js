@@ -1,5 +1,5 @@
 
-import { asynchronous, renderCards, todoCounter } from "../index.js";
+import { asynchronous, renderCards } from "../index.js";
 import { setDataLocalStorage, getDataLocalStorage } from "./local-storage.js";
 import { CreatePopup } from "./template-popup";
 import { printCounter } from './counter-todo.js';
