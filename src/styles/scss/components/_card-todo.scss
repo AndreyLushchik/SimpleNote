@@ -44,9 +44,6 @@
     border-radius: 0.6rem;
     background: $color-pressed;
     transition: 0.2s;
-    /*&.hidden {
-      display: none;
-    }*/
   }
 
   &__btn-edit:hover {
@@ -68,9 +65,6 @@
     border-radius: 0.6rem;
     background: $color-pressed;
     transition: 0.2s;
-    /*&.hidden {
-      display: none;
-    }*/
   }
   &__btn-delete:hover {
     @include hover-button;
