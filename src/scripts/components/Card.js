@@ -24,7 +24,7 @@ export class Card {
     createCard() {
         return `<div class="card" draggable="true" id="${this.id}">
         <h3 class="card__title">${this.title}</h3>
-        <input disabled type="textarea" placeholder="Todo" class="card__description" value=${this.description}>
+        <p class="card__description">${this.description}</p>
         <p class="card__user">${this.user}</p>
         <div class="card__time">${this.time}</div>
         </div>`;

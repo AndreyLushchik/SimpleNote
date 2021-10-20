@@ -1,6 +1,9 @@
 .header {
+  position: fixed;
+  width: -webkit-fill-available;
   background: #6a7a4c;
   height: 5rem;
+  opacity: 0.9;
 
   &__flex-container {
     display: flex;
