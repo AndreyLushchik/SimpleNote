@@ -33,6 +33,7 @@ const columnProgress = document.querySelector(".column-progress")
 const columnDone = document.querySelector(".column-done")
 const naviBtn = document.querySelector(".navi-btn")
 
+
 // Event listeners
               
 header.addEventListener("click", searchCards)
@@ -70,14 +71,15 @@ const popupBtn = [
   },
   {
     class: "popup-warning__footer-btn-blue", text: "ok",
-    hendler() {
-      setDataLocalStorage([])
-      renderCards([])
-
-      const popup = new PopupSmall({}, "", [])
-      popup.popupClose()
-    }
-  }]
+      hendler() {
+        const todoDone = getDataLocalStorage()
+        todoDone.map(item => item.classCard === "done" && todoDone.splice(item))
+        setDataLocalStorage(todoDone)
+        renderCards(todoDone)
+        const popup = new PopupSmall({}, "", [])
+        popup.popupClose()
+      }
+    }]
 
 const popupBtnOk = [  {
   class: "popup-warning__footer-btn-red", text: "ok",
@@ -131,14 +133,15 @@ function navBtnHandler(event) {
 }
 
 function popupSmallRender() {
-  const data = getDataLocalStorage()
-  if (data.length > 0) {
-    const popup = new PopupSmall({}, "All todos will be deleted. Confirm?", [popupBtn])
-    popup.popupOpen()
-  } else {
-    const popup = new PopupSmall({}, "you don't have any cases started", [popupBtnOk])
-    popup.popupOpen()
-  }
+  getDataLocalStorage().forEach(item => {
+    if (item.classCard === "done") {
+      const popup = new PopupSmall({}, "All todos will be deleted. Confirm?", [popupBtn])
+      popup.popupOpen()
+    } else {
+      const popup = new PopupSmall({}, "You have no completed todos", [popupBtnOk])
+      popup.popupOpen()
+    }
+  })
 }
 
 function popupRender() {
@@ -181,16 +184,22 @@ function printUsers({ name, username }) {
 
 function fillLocalStorage() {
   const popupTitle = document.querySelector(".popup__title");
-  const popupDescription = document.querySelector(".popup__description");
+  const popupDescription = document.querySelector(".popup__description")
   const select = document.querySelector(".popup__user")
   const data = getDataLocalStorage();
-  const todoStorage = new LocalStorage(popupTitle.value, popupDescription.value, select.value);
-  data.push(todoStorage);
-  setDataLocalStorage(data);
-  popupTitle.value = "";
-  popupDescription.value = "";
+  const todoStorage = new LocalStorage(popupTitle.value, popupDescription.value, select.value)
+  if(todoStorage.title === "" ||  todoStorage.description === "" || todoStorage.user === ""){
+    const popup = new Popup({},"add","close")
+    popup.popupClose()
+    const popupAlert = new PopupSmall({}, "You need to fill in all the fields", [popupBtnOk])
+    asynchronous(1000).then(() => popupAlert.popupOpen())
+    } else{
+      data.push(todoStorage);
+      setDataLocalStorage(data);
+      popupTitle.value = "";
+      popupDescription.value = "";
+    }
 }
-
 
 function renderCards(data) {
   cardContainerTodo.innerHTML = ""
