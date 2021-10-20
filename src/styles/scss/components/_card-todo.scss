@@ -1,18 +1,15 @@
 .card {
-    width: 30rem;
-    overflow-wrap: break-word;
-    min-height: 10em;
-    background: #ffff;
-    border-radius: 1em;
-    border: solid 0.2rem black;
-    margin: 1em 0 1em 1em;
-    padding: 0.8em;
-    cursor: pointer;
-    &:active{
-      cursor: grabbing;
-      
-      
-    }
+  width: 30rem;
+  overflow-wrap: break-word;
+  min-height: 10em;
+  background: #ffff;
+  border-radius: 1em;
+  margin: 1em 1em 1em 1em;
+  padding: 0.8em;
+  cursor: pointer;
+  &:active {
+    cursor: grabbing;
+  }
 
   &__title {
     margin: 0.5em 0 0.5em;
@@ -37,6 +34,7 @@
     color: white;
     text-decoration: none;
     padding: 0.1em 0.8em;
+    margin: 0 0.5em 0 0.5em;
     outline: none;
     border-width: 0.2rem 0;
     border-style: solid none;
@@ -44,11 +42,8 @@
     border-radius: 0.6rem;
     background: $color-pressed;
     transition: 0.2s;
-
-
   }
 
-  
   &__btn-edit:hover {
     @include hover-button;
   }
@@ -56,12 +51,9 @@
     @include active-button;
   }
 
+  //   &__btn-back{
 
-//   &__btn-back{
-   
-  
-// }
-
+  // }
 
   &__btn-delete {
     display: inline-block;
@@ -75,9 +67,6 @@
     border-radius: 0.6rem;
     background: $color-pressed;
     transition: 0.2s;
-
-
-
   }
   &__btn-delete:hover {
     @include hover-button;
@@ -86,7 +75,40 @@
     @include active-button;
   }
 
-  &__btn-complete
+  &__btn-back {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: 0.1em 0.8em;
+    outline: none;
+    border-width: 0.2rem 0;
+    border-style: solid none;
+    border-color: $color-pressed;
+    border-radius: 0.6rem;
+    background: $color-pressed;
+    transition: 0.2s;
+  }
+  &__btn-back:hover {
+    @include hover-button;
+  }
+  &__btn-back:active {
+    @include active-button;
+  }
+
+  &__btn-complete {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: 0.1em 0.8em;
+    margin: 0 0.5em 0 0.5em;
+    outline: none;
+    border-width: 0.2rem 0;
+    border-style: solid none;
+    border-color: $color-pressed;
+    border-radius: 0.6rem;
+    background: $color-pressed;
+    transition: 0.2s;
+  }
 
   &__btn-progress {
     display: inline-block;
@@ -100,9 +122,8 @@
     border-radius: 0.6rem;
     background: $color-pressed;
     transition: 0.2s;
-
- 
   }
+
   &__btn-progress:hover {
     @include hover-button;
   }
