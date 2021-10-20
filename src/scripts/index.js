@@ -63,14 +63,14 @@ const cardBtnDone = [{ id: "", class: "card__btn-delete", text: "delete" }]
 
 const popupBtn = [
   {
-    class: "popup-warning__footer-btn-red", text: "cansel", padding: "10px", background: "red",
+    class: "popup-warning__footer-btn-red", text: "cansel",
     hendler() {
       const popup = new PopupSmall({}, "", [])
       popup.popupClose()
     }
   },
   {
-    class: "popup-warning__footer-btn-blue", text: "ok", padding: "10px", background: "blue",
+    class: "popup-warning__footer-btn-blue", text: "ok",
       hendler() {
         const todoDone = getDataLocalStorage()
         todoDone.map(item => item.classCard === "done" && todoDone.splice(item))
@@ -82,7 +82,7 @@ const popupBtn = [
     }]
 
 const popupBtnOk = [  {
-  class: "popup-warning__footer-btn-red", text: "ok", padding: "10px", background: "red",
+  class: "popup-warning__footer-btn-red", text: "ok",
   hendler() {
     const popup = new PopupSmall({}, "", [])
     popup.popupClose()
@@ -100,11 +100,11 @@ const asynchronous = (ms) => {
 
 function breackPointHendler() {
   const viewport_width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
-  if (viewport_width >= 760) {
+  if (viewport_width >= 991) {
     columnTodo.style.display = "block"
     columnProgress.style.display = "block"
     columnDone.style.display = "block"
-  } else if (viewport_width <= 760) {
+  } else if (viewport_width <= 991) {
     columnTodo.style.display = "block"
     columnProgress.style.display = "none"
     columnDone.style.display = "none"
