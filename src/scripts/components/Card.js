@@ -4,7 +4,7 @@
 // в данном классе реализованы методы динамического создания карточки. Добавления ее в DOM дерево,
 // динамического добавления слушателя событий на карточку для взаимодействия с ее кнопками и реализации Drag & Drop.
 
-import { renderCards, asynchronous, popupBtnNone, renderCounter } from "./../index.js";
+import { renderCards, asynchronous, popupBtnOk, renderCounter } from "./../index.js";
 import { setDataLocalStorage, getDataLocalStorage } from "./storage-API.js";
 import { PopupSmall, Popup } from "./Popup.js";
 
@@ -50,8 +50,8 @@ export class Card {
             switch (event.target) {
                 case cardBtnProgress:
                     const lengthProgresse = getDataLocalStorage().filter(item => item.classCard === "progress")
-                    if (lengthProgresse.length >= 5) {
-                        const popup = new PopupSmall({}, "it is necessary to finish the things started", [popupBtnNone])
+                    if (lengthProgresse.length >= 2) {
+                        const popup = new PopupSmall({}, "it is necessary to finish the things started", [popupBtnOk])
                         popup.popupOpen()
                         break;
                     } else {
@@ -72,7 +72,7 @@ export class Card {
                 case cardBtnEdit:
                     getDataLocalStorage().find(item => {
                         if (item.id == card.id) {
-                            const popup = new Popup(item)
+                            const popup = new Popup(item,"save", "cansel")
                             popup.popupOpen()
                         }
                     })

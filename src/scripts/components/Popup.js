@@ -9,16 +9,17 @@ import { setDataLocalStorage, getDataLocalStorage } from "./storage-API.js";
 
 class Popup {
 
-    constructor({ id = "", title = "", description = "", user = "" }) {
+    constructor({ id = "", title = "", description = "", user = "" },confirmBtn,cancelBtn) {
         this.id = id
         this.title = title
         this.description = description
         this.user = user
+        this.confirmBtn = confirmBtn
+        this.cancelBtn = cancelBtn
     }
 
     createPopup() {
         return `<div class="popup" id="${this.id}">
->>>>>>> df6ebca4a50a197b1429e2d9154c8b9d629ded36
     <div class="popup__body">
     <div class="popup__content">
     <input type="text" placeholder="Title" class="popup__title" value=${this.title}>
@@ -27,8 +28,8 @@ class Popup {
     <select name="user" class="popup__user">
     <option>${this.user}</option>
     </select>
-    <button class="popup__btn-add">add</button>
-     <button class="popup__btn-close">close</button>
+    <button class="popup__btn-add">${this.confirmBtn}</button>
+     <button class="popup__btn-close">${this.cancelBtn}</button>
     </div>
     </div>
     </div>
@@ -67,6 +68,7 @@ class Popup {
     }
 
     popupOpen() {
+        this.addListenerPopup()
         getUsers()
         const popup = document.querySelector(".popup")
         const popupContent = document.querySelector(".popup__content")

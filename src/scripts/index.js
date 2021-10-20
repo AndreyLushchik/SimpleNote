@@ -28,13 +28,18 @@ const cancelBtn = document.querySelector(".header__cancel-btn")
 const cardContainerTodo = document.querySelector(".column-todo__card-container");
 const cardContainerProgress = document.querySelector(".column-progress__card-container");
 const cardContainerDone = document.querySelector(".column-done__card-container")
+const columnTodo = document.querySelector(".column-todo")
+const columnProgress = document.querySelector(".column-progress")
+const columnDone = document.querySelector(".column-done")
+const naviBtn = document.querySelector(".navi-btn")
 
 // Event listeners
               
-
 header.addEventListener("click", searchCards)
 btnAdd.addEventListener("click", popupRender)
 btnDelete.addEventListener("click", popupSmallRender)
+naviBtn.addEventListener("click",navBtnHandler);
+window.addEventListener("resize",breackPointHendler)
 
 // Card Button Todo
 
@@ -74,7 +79,13 @@ const popupBtn = [
     }
   }]
 
-const popupBtnNone = []
+const popupBtnOk = [  {
+  class: "popup-warning__footer-btn-red", text: "ok", padding: "10px", background: "red",
+  hendler() {
+    const popup = new PopupSmall({}, "", [])
+    popup.popupClose()
+  }
+}]
 
 
 // Plugins App 
@@ -85,19 +96,53 @@ const asynchronous = (ms) => {
   })
 }
 
+function breackPointHendler() {
+  const viewport_width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
+  if (viewport_width >= 760) {
+    columnTodo.style.display = "block"
+    columnProgress.style.display = "block"
+    columnDone.style.display = "block"
+  } else if (viewport_width <= 760) {
+    columnTodo.style.display = "block"
+    columnProgress.style.display = "none"
+    columnDone.style.display = "none"
+  }
+}
+
+function navBtnHandler(event) {
+  const naviBtn = event.target.dataset.btn
+  switch (naviBtn) {
+    case "todo":
+      columnTodo.style.display = "block"
+      columnProgress.style.display = "none"
+      columnDone.style.display = "none"
+      break;
+    case "progress":
+      columnTodo.style.display = "none"
+      columnProgress.style.display = "block"
+      columnDone.style.display = "none"
+      break;
+    case "done":
+      columnTodo.style.display = "none"
+      columnProgress.style.display = "none"
+      columnDone.style.display = "block"
+      break;
+  }
+}
+
 function popupSmallRender() {
   const data = getDataLocalStorage()
   if (data.length > 0) {
     const popup = new PopupSmall({}, "All todos will be deleted. Confirm?", [popupBtn])
     popup.popupOpen()
   } else {
-    const popup = new PopupSmall({}, "you don't have any cases started", [popupBtnNone])
+    const popup = new PopupSmall({}, "you don't have any cases started", [popupBtnOk])
     popup.popupOpen()
   }
 }
 
 function popupRender() {
-  const popup = new Popup({})
+  const popup = new Popup({},"add","close")
   popup.popupOpen()
 }
 
@@ -184,7 +229,7 @@ function renderCounter(itemClass, title, classCard) {
 }
 
 
-export { printUsers, fillLocalStorage, renderCards, asynchronous, popupBtnNone, renderCounter }
+export { printUsers, fillLocalStorage, renderCards, asynchronous, popupBtnOk, renderCounter }
 
 
 
