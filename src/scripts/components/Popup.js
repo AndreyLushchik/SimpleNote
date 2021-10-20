@@ -28,8 +28,8 @@ class Popup {
     <select name="user" class="popup__user">
     <option>${this.user}</option>
     </select>
-    <button class="popup__btn-add">${this.confirmBtn}</button>
-     <button class="popup__btn-close">${this.cancelBtn}</button>
+    <button type="button" class="popup__btn-add">${this.confirmBtn}</button>
+     <button type="button" class="popup__btn-close">${this.cancelBtn}</button>
     </div>
     </div>
     </div>
@@ -65,6 +65,7 @@ class Popup {
                     break;
             }
         })
+        document.addEventListener("keydown",(event => this.deleteEnter(event)))   
     }
 
     popupOpen() {
@@ -87,7 +88,18 @@ class Popup {
     destroy() {
         const popup = document.querySelector(".popup")
         asynchronous(1000).then(() => popup.remove(popup))
+        asynchronous(1000).then(() => popup.removeEventListener("click", () => this.addListenerPopup()))
     }
+
+    deleteEnter(event){
+        if(event.code === "NumpadEnter") {
+        event.preventDefault()    
+     } else if(event.code === "Enter"){
+        event.preventDefault()  
+     } else if(event.code === "Escape"){
+         this.popupClose()
+     }
+}
 }
 
 class PopupSmall extends Popup {
@@ -116,6 +128,7 @@ class PopupSmall extends Popup {
         this.addPopup()
         const btnClose = document.querySelector(".popup-warning__btn-close")
         btnClose.addEventListener("click", () => this.popupClose())
+        document.addEventListener("keydown",(event => this.deleteEnter(event)))
     }
 
     popupOpen() {
@@ -123,8 +136,8 @@ class PopupSmall extends Popup {
         this.createBtn()
         const popup = document.querySelector(".popup-warning")
         const popupContent = document.querySelector(".popup-warning__content")
-        asynchronous(0).then(() => popup.classList.add("open"))
-        asynchronous(0).then(() => popupContent.classList.add("open"))
+        asynchronous(100).then(() => popup.classList.add("open"))
+        asynchronous(100).then(() => popupContent.classList.add("open"))
     }
 
     popupClose() {

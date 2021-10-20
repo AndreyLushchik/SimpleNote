@@ -50,7 +50,7 @@ export class Card {
             switch (event.target) {
                 case cardBtnProgress:
                     const lengthProgresse = getDataLocalStorage().filter(item => item.classCard === "progress")
-                    if (lengthProgresse.length >= 2) {
+                    if (lengthProgresse.length >= 5) {
                         const popup = new PopupSmall({}, "it is necessary to finish the things started", [popupBtnOk])
                         popup.popupOpen()
                         break;
