@@ -39,53 +39,51 @@ export class Card {
     }
 
     addListenerCard() {
-        const card = document.querySelector(".card")
-        const cardBtnProgress = document.querySelector(".card__btn-progress")
-        const cardBtnDelete = document.querySelector(".card__btn-delete")
-        const cardBtnEdit = document.querySelector(".card__btn-edit")
-        const cardBtnBack = document.querySelector(".card__btn-back")
-        const cardBtnComlete = document.querySelector(".card__btn-complete")
-
-        document.addEventListener("click", (event) => {
-            switch (event.target) {
-                case cardBtnProgress:
+        const card = document.querySelector('.card')
+        card.addEventListener("click", (event) => {
+            console.log(event.target.className);
+            switch (event.target.className) {
+                case 'card__btn-progress':
                     const lengthProgresse = getDataLocalStorage().filter(item => item.classCard === "progress")
                     if (lengthProgresse.length >= 5) {
                         const popup = new PopupSmall({}, "it is necessary to finish the things started", [popupBtnOk])
                         popup.popupOpen()
-                        break;
+                        return;
                     } else {
-                        const addProgressClass = getDataLocalStorage()
-                        addProgressClass.find(item => (item.id == card.id) && (item.classCard = "progress"))
+                        let addProgressClass = getDataLocalStorage()
+                        addProgressClass.find(item => (item.id === this.id) && (item.classCard = "progress"))
                         setDataLocalStorage(addProgressClass)
+                        addProgressClass = getDataLocalStorage()
+                        console.log(addProgressClass);
                         renderCards(addProgressClass)
                         break;
                     }
-                case cardBtnDelete:
-                    card.remove();
-                    const deleteData = getDataLocalStorage().filter(item => item.id != card.id)
+                case "card__btn-delete":
+                    const deleteData = getDataLocalStorage().filter(item => item.id != this.id)
                     setDataLocalStorage(deleteData)
                     renderCounter(".column-todo__title", "Todo", "todo")
                     renderCounter(".column-progress__title", "In Progress", "progress")
                     renderCounter(".column-done__title", "Done", "done")
+                    renderCards(deleteData)
                     break;
-                case cardBtnEdit:
+                case "card__btn-edit":
                     getDataLocalStorage().find(item => {
-                        if (item.id == card.id) {
-                            const popup = new Popup(item,"save", "cansel")
+                        if (item.id == this.id) {
+                            const popup = new Popup(item, "save", "cancel")
                             popup.popupOpen()
                         }
                     })
                     break;
-                case cardBtnBack:
+                case "card__btn-back":
                     const addTodoClass = getDataLocalStorage()
-                    addTodoClass.find(item => (item.id == card.id) && (item.classCard = "todo"))
+                    addTodoClass.find(item => (item.id === this.id) && (item.classCard = "todo"))
                     setDataLocalStorage(addTodoClass)
                     renderCards(addTodoClass)
+                    console.log(this.id);
                     break;
-                case cardBtnComlete:
+                case "card__btn-complete":
                     const addDoneClass = getDataLocalStorage()
-                    addDoneClass.find(item => (item.id == card.id) && (item.classCard = "done"))
+                    addDoneClass.find(item => (item.id === this.id) && (item.classCard = "done"))
                     setDataLocalStorage(addDoneClass)
                     renderCards(addDoneClass)
                     break;

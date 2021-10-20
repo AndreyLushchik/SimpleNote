@@ -161,8 +161,6 @@ class PopupSmall extends Popup {
             const btn = document.createElement("button")
             btn.className = item.class
             btn.textContent = item.text
-            btn.style.padding = item.padding
-            btn.style.background = item.background
             btn.onclick = item.hendler
             popupFooter.append(btn)
         })

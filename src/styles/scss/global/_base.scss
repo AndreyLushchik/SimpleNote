@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 html {
     font-size: 10px;
     min-width: 320px;
@@ -13,7 +14,8 @@ html {
     min-height: 100%;
     overflow: hidden;
     background: url("../../images/fullscreen.jpg") 20% / cover no-repeat local;
-    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+    background-attachment: fixed
+    
 }
 
 .container {
