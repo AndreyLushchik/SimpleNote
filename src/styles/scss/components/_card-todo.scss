@@ -44,7 +44,8 @@
     border-radius: 0.6rem;
     background: $color-pressed;
     transition: 0.2s;
-   
+
+
   }
 
   
@@ -56,10 +57,10 @@
   }
 
 
-  &__btn-back{
+//   &__btn-back{
    
   
-}
+// }
 
 
   &__btn-delete {
@@ -74,6 +75,8 @@
     border-radius: 0.6rem;
     background: $color-pressed;
     transition: 0.2s;
+
+
 
   }
   &__btn-delete:hover {

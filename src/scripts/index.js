@@ -1,19 +1,20 @@
 "use strict";
 
-import{Clock} from "./components/Clock.js";
-import{setDataLocalStorage,getDataLocalStorage} from "./components/storage-API.js";
-import{LocalStorage} from "./components/Local-storage.js";
-import{PopupSmall, Popup} from "./components/Popup.js"
-import{Card} from "./components/Card.js";
+import { Clock } from "./components/Clock.js";
+import { setDataLocalStorage, getDataLocalStorage } from "./components/storage-API.js";
+import { LocalStorage } from "./components/Local-storage.js";
+import { PopupSmall, Popup } from "./components/Popup.js"
+import { Card } from "./components/Card.js";
+
 
 // App
 
 document.addEventListener("DOMContentLoaded", app);
-function app(){
-const data =  getDataLocalStorage();
-renderCards(data)
-let clock = new Clock()
-clock.start()
+function app() {
+  const data = getDataLocalStorage();
+  renderCards(data)
+  let clock = new Clock()
+  clock.start()
 }
 
 // DOM Elements
@@ -29,43 +30,52 @@ const cardContainerProgress = document.querySelector(".column-progress__card-con
 const cardContainerDone = document.querySelector(".column-done__card-container")
 
 // Event listeners
+              
 
-
-header.addEventListener("click",searchCards)
+header.addEventListener("click", searchCards)
 btnAdd.addEventListener("click", popupRender)
-btnDelete.addEventListener("click",popupSmallRender)
+btnDelete.addEventListener("click", popupSmallRender)
 
 // Card Button Todo
 
 const cardBtnTodo = [
-  {id:"",class:"card__btn-delete",text:"delete",padding:"10px",background:"blue",},
-  {id:"",class:"card__btn-edit",text:"edit",padding:"10px",background:"yellow",},
-  {id:"",class:"card__btn-progress",text:">",padding:"10px",background:"white",}]
+  { id: "", class: "card__btn-delete", text: "delete" },
+  { id: "", class: "card__btn-edit", text: "edit" },
+  { id: "", class: "card__btn-progress", text: ">" }]
 
 // Card Button Progress
 
 const cardBtnProgress = [
-  {id:"",class:"card__btn-back",text:"back",padding:"10px",background:"yellow",},
-  {id:"",class:"card__btn-complete",text:"complete",padding:"10px",background:"yellow",}]
+  { id: "", class: "card__btn-back", text: "back" },
+  { id: "", class: "card__btn-complete", text: "complete" }]
 
 // Card Button Done
 
-const cardBtnDone = [{id:"",class:"card__btn-delete",text:"delete",padding:"10px",background:"blue",}]
+const cardBtnDone = [{ id: "", class: "card__btn-delete", text: "delete" }]
 
 // Popup Button 
 
 const popupBtn = [
-  {class:"popup-warning__footer-btn-red",text:"cansel",padding:"10px",background:"red",
-  hendler(){const popup = new PopupSmall({},"",[])
-  popup.popupClose()}},
-  {class:"popup-warning__footer-btn-blue",text:"ok",padding:"10px",background:"blue",
-  hendler(){setDataLocalStorage([])
-  renderCards([])
+  {
+    class: "popup-warning__footer-btn-red", text: "cansel", padding: "10px", background: "red",
+    hendler() {
+      const popup = new PopupSmall({}, "", [])
+      popup.popupClose()
+    }
+  },
+  {
+    class: "popup-warning__footer-btn-blue", text: "ok", padding: "10px", background: "blue",
+    hendler() {
+      setDataLocalStorage([])
+      renderCards([])
 
-  const popup = new PopupSmall({},"",[])
-  popup.popupClose()}}]
+      const popup = new PopupSmall({}, "", [])
+      popup.popupClose()
+    }
+  }]
 
-  const popupBtnNone = []               
+const popupBtnNone = []
+
 
 // Plugins App 
 
@@ -75,16 +85,21 @@ const asynchronous = (ms) => {
   })
 }
 
-
-function popupSmallRender(){
-const popup = new PopupSmall({},"All todos will be deleted. Confirm?",[popupBtn])
-popup.popupOpen()
-
+function popupSmallRender() {
+  const data = getDataLocalStorage()
+  if (data.length > 0) {
+    const popup = new PopupSmall({}, "All todos will be deleted. Confirm?", [popupBtn])
+    popup.popupOpen()
+  } else {
+    const popup = new PopupSmall({}, "you don't have any cases started", [popupBtnNone])
+    popup.popupOpen()
+  }
 }
 
-function popupRender(){
-const popup =  new Popup({})
-popup.popupOpen()
+function popupRender() {
+  const popup = new Popup({})
+  popup.popupOpen()
+}
 
 
 function searchCards(event) {
@@ -124,7 +139,7 @@ function fillLocalStorage() {
   const popupDescription = document.querySelector(".popup__description");
   const select = document.querySelector(".popup__user")
   const data = getDataLocalStorage();
-  const todoStorage = new LocalStorage(popupTitle.value, popupDescription.value,select.value);
+  const todoStorage = new LocalStorage(popupTitle.value, popupDescription.value, select.value);
   data.push(todoStorage);
   setDataLocalStorage(data);
   popupTitle.value = "";
@@ -137,38 +152,39 @@ function renderCards(data) {
   cardContainerProgress.innerHTML = ""
   cardContainerDone.innerHTML = ""
   data.map(item => {
-    switch (item.classCard){
-    case "todo": 
-    const todo = new Card(item,"yellow",[cardBtnTodo],cardContainerTodo)
-    todo.addCard()
-    break;
-    case "progress":
-    const progress = new Card(item,"blue",[cardBtnProgress],cardContainerProgress)
-    progress.addCard()
-    break;
-    case "done":
-    const done = new Card(item,"BlueViolet",[cardBtnDone],cardContainerDone)
-    done.addCard()
-    break;
+
+    switch (item.classCard) {
+      case "todo":
+        const todo = new Card(item, [cardBtnTodo], cardContainerTodo)
+        todo.addCard()
+        break;
+      case "progress":
+        const progress = new Card(item, [cardBtnProgress], cardContainerProgress)
+        progress.addCard()
+        break;
+      case "done":
+        const done = new Card(item, [cardBtnDone], cardContainerDone)
+        done.addCard()
+        break;
     }
   })
-  renderCounter(".column-todo__title","Todo","todo")
-  renderCounter(".column-progress__title","In Progress","progress")
-  renderCounter(".column-done__title","Done","done")
- }
+  renderCounter(".column-todo__title", "Todo", "todo")
+  renderCounter(".column-progress__title", "In Progress", "progress")
+  renderCounter(".column-done__title", "Done", "done")
+}
 
- function counter (classCard){ 
+function counter(classCard) {
   const todo = getDataLocalStorage().filter(item => item.classCard === classCard)
   return todo
 
- }
-  function renderCounter (itemClass,title,classCard){
+}
+function renderCounter(itemClass, title, classCard) {
   const todo = counter(classCard)
   document.querySelector(`${itemClass}`).innerText = `${title}:${todo.length}`
 }
- 
 
-export{ printUsers,fillLocalStorage,renderCards,asynchronous,popupBtnNone,renderCounter}
+
+export { printUsers, fillLocalStorage, renderCards, asynchronous, popupBtnNone, renderCounter }
 
 
 
