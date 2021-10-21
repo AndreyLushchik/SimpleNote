@@ -11,6 +11,7 @@ import { Card } from "./components/Card.js";
 
 document.addEventListener("DOMContentLoaded", app);
 function app() {
+  breackPointHendler()
   const data = getDataLocalStorage();
   renderCards(data)
   let clock = new Clock()
@@ -35,12 +36,12 @@ const naviBtn = document.querySelector(".navi-btn")
 
 
 // Event listeners
-              
+
 header.addEventListener("click", searchCards)
 btnAdd.addEventListener("click", popupRender)
 btnDelete.addEventListener("click", popupSmallRender)
-naviBtn.addEventListener("click",navBtnHandler);
-window.addEventListener("resize",breackPointHendler)
+naviBtn.addEventListener("click", navBtnHandler);
+window.addEventListener("resize", breackPointHendler)
 
 // Card Button Todo
 
@@ -71,17 +72,17 @@ const popupBtn = [
   },
   {
     class: "popup-warning__footer-btn-blue", text: "ok",
-      hendler() {
-        const todoDone = getDataLocalStorage()
-        todoDone.map(item => item.classCard === "done" && todoDone.splice(item))
-        setDataLocalStorage(todoDone)
-        renderCards(todoDone)
-        const popup = new PopupSmall({}, "", [])
-        popup.popupClose()
-      }
-    }]
+    hendler() {
+      const todoDone = getDataLocalStorage()
+      todoDone.map(item => item.classCard === "done" && todoDone.splice(item))
+      setDataLocalStorage(todoDone)
+      renderCards(todoDone)
+      const popup = new PopupSmall({}, "", [])
+      popup.popupClose()
+    }
+  }]
 
-const popupBtnOk = [  {
+const popupBtnOk = [{
   class: "popup-warning__footer-btn-red", text: "ok",
   hendler() {
     const popup = new PopupSmall({}, "", [])
@@ -104,15 +105,18 @@ function breackPointHendler() {
     columnTodo.style.display = "block"
     columnProgress.style.display = "block"
     columnDone.style.display = "block"
+    naviBtn.style.display = 'none'
   } else if (viewport_width <= 991) {
     columnTodo.style.display = "block"
     columnProgress.style.display = "none"
     columnDone.style.display = "none"
+    naviBtn.style.display = null
   }
 }
 
 function navBtnHandler(event) {
   const naviBtn = event.target.dataset.btn
+  console.log(naviBtn);
   switch (naviBtn) {
     case "todo":
       columnTodo.style.display = "block"
@@ -145,7 +149,7 @@ function popupSmallRender() {
 }
 
 function popupRender() {
-  const popup = new Popup({},"add","close")
+  const popup = new Popup({}, "add", "close")
   popup.popupOpen()
 }
 
@@ -172,6 +176,12 @@ function searchCards(event) {
     renderCards(getDataLocalStorage())
   }
 }
+// hidden search
+document.addEventListener('click', event => {
+  if (event.target != searchBtn && event.target != search) {
+    search.classList.remove("show-search")
+  }
+})
 
 
 function printUsers({ name, username }) {
@@ -188,17 +198,17 @@ function fillLocalStorage() {
   const select = document.querySelector(".popup__user")
   const data = getDataLocalStorage();
   const todoStorage = new LocalStorage(popupTitle.value, popupDescription.value, select.value)
-  if(todoStorage.title === "" ||  todoStorage.description === "" || todoStorage.user === ""){
-    const popup = new Popup({},"add","close")
+  if (todoStorage.title === "" || todoStorage.description === "" || todoStorage.user === "") {
+    const popup = new Popup({}, "add", "close")
     popup.popupClose()
     const popupAlert = new PopupSmall({}, "You need to fill in all the fields", [popupBtnOk])
     asynchronous(1000).then(() => popupAlert.popupOpen())
-    } else{
-      data.push(todoStorage);
-      setDataLocalStorage(data);
-      popupTitle.value = "";
-      popupDescription.value = "";
-    }
+  } else {
+    data.push(todoStorage);
+    setDataLocalStorage(data);
+    popupTitle.value = "";
+    popupDescription.value = "";
+  }
 }
 
 function renderCards(data) {
