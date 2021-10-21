@@ -4,14 +4,12 @@
   background: $card-color;
   width: 35rem;
   border-radius: 0.5rem;
- 
 
   &__title {
     font-size: 2rem;
     color: rgb(255, 255, 255);
     font-family: "Roboto", sans-serif;
     margin: 1rem 0 1rem 3.5rem;
-    
   }
 
   &__card-container {
@@ -20,7 +18,7 @@
     flex-direction: column;
     width: 100%;
     min-height: 30px;
-    &.drag-enter{
+    &.drag-enter {
       min-height: 30rem;
     }
   }

@@ -1,5 +1,4 @@
 
-
 //Шаблон для создания обькта с данными которые храняться в Local storag
 
 export class LocalStorage {

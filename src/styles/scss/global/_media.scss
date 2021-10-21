@@ -1,4 +1,3 @@
-
 @media (min-width: 1200px) {
   .column-progress {
     margin: 0 1em 0 1em;
@@ -20,18 +19,22 @@
       visibility: visible;
     }
   }
+  .column-todo {
+    margin: 2em 0 1em 0;
+  }
   .column-progress {
     display: none;
-
+    margin: 2em 0 1em 0;
   }
   .column-done {
     display: none;
-
+    margin: 2em 0 1em 0;
   }
   .navi-btn {
     opacity: 1;
+    margin: 1em 0 1em 0;
   }
-  .content__flex-container{
+  .content__flex-container {
     display: flex;
     justify-content: center;
   }
