@@ -2,7 +2,7 @@
 
 import { Clock } from "./components/Clock.js";
 import { setDataLocalStorage, getDataLocalStorage } from "./components/storage-API.js";
-import { LocalStorage } from "./components/Local-storage.js";
+import { LocalStorage } from "./components/local-storage.js";
 import { PopupSmall, Popup } from "./components/Popup.js"
 import { Card } from "./components/Card.js";
 
@@ -116,7 +116,6 @@ function breackPointHendler() {
 
 function navBtnHandler(event) {
   const naviBtn = event.target.dataset.btn
-  console.log(naviBtn);
   switch (naviBtn) {
     case "todo":
       columnTodo.style.display = "block"
@@ -215,7 +214,7 @@ function renderCards(data) {
   cardContainerTodo.innerHTML = ""
   cardContainerProgress.innerHTML = ""
   cardContainerDone.innerHTML = ""
-  data.map(item => {
+  data.forEach(item => {
 
     switch (item.classCard) {
       case "todo":
