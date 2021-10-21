@@ -51,10 +51,6 @@
     @include active-button;
   }
 
-  //   &__btn-back{
-
-  // }
-
   &__btn-delete {
     display: inline-block;
     color: white;
@@ -108,6 +104,12 @@
     border-radius: 0.6rem;
     background: $color-pressed;
     transition: 0.2s;
+  }
+  &__btn-complete:hover {
+    @include hover-button;
+  }
+  &__btn-complete:active {
+    @include active-button;
   }
 
   &__btn-progress {

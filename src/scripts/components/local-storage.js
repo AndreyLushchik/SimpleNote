@@ -1,6 +1,5 @@
 
-
-//РЁР°Р±Р»РѕРЅ РґР»СЏ СЃРѕР·РґР°РЅРёСЏ РѕР±СЊРєС‚Р° СЃ РґР°РЅРЅС‹РјРё РєРѕС‚РѕСЂС‹Рµ С…СЂР°РЅСЏС‚СЊСЃСЏ РІ Local storag
+//Шаблон для создания обькта с данными которые храняться в Local storag
 
 export class LocalStorage {
   constructor(title, description, user) {
