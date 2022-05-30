@@ -1,0 +1,108 @@
+.popup-warning {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: all 0.8s ease 0s;
+  &.open {
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.8s ease 0s;
+  }
+  &__body {
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1rem;
+    transition: all 0.8s ease 0s;
+  }
+
+  &__content {
+    position: relative;
+    background: linear-gradient(
+      to bottom left,
+      rgb(138, 138, 45),
+      rgb(127, 127, 41),
+      rgb(117, 116, 38),
+      rgb(106, 104, 34),
+      rgb(95, 93, 30),
+      rgb(84, 82, 26),
+      rgb(74, 71, 23),
+      rgb(63, 60, 19),
+      rgb(52, 49, 15),
+      rgb(41, 37, 11),
+      rgb(31, 26, 8),
+      rgb(20, 15, 4)
+    );
+    color: rgb(255, 255, 255);
+    max-width: 80rem;
+    padding: 3em;
+    border-radius: 1em;
+    transition: all 0.8s ease 0s;
+    opacity: 0;
+    transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
+    
+    &.open {
+      transition: all 0.8s ease 0s;
+      transform: perspective(600px) translate(0px, 0%) rotateX(0deg);
+      opacity: 1;
+    }
+  }
+  
+  /*&__footer {
+    position: relative;
+  }*/
+
+  &__footer-btn-red {
+    position: relative;
+    margin: 2.5em 2em 0 0;
+    display: inline-block;
+    width: 6em;
+    height: 2.5em;
+    line-height: 2.4em;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    color: rgb(255, 255, 255);
+    outline: none;
+    border: 1px solid rgba(110, 121, 128, 0.8);
+    border-top-color: rgba(0, 0, 0, 0.3);
+    border-radius: 0.5rem;
+    background: $button-color;
+  }
+
+  &__footer-btn-blue {
+    position: relative;
+    margin: 2.5em 0 0 2em;
+    display: inline-block;
+    width: 6em;
+    height: 2.5em;
+    line-height: 2.4em;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    color: rgb(255, 255, 255);
+    outline: none;
+    border: 0.1rem solid rgba(110, 121, 128, 0.8);
+    border-top-color: rgba(0, 0, 0, 0.3);
+    border-radius: 0.5rem;
+    background: $button-color;
+  }
+
+  &__btn-close {
+    position: absolute;
+    background: none;
+    right: 10px;
+    top: 5px;
+    font-size: 2em;
+  }
+}

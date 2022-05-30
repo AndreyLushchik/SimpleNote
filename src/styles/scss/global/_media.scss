@@ -1,0 +1,41 @@
+@media (min-width: 1200px) {
+  .column-progress {
+    margin: 0 1em 0 1em;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .column-progress {
+    margin: 0 1em 0 1em;
+  }
+}
+
+@media (max-width: 991px) {
+  .header__search {
+    opacity: 0;
+    visibility: hidden;
+    &.show-search {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  .column-todo {
+    margin: 2em 0 1em 0;
+  }
+  .column-progress {
+    display: none;
+    margin: 2em 0 1em 0;
+  }
+  .column-done {
+    display: none;
+    margin: 2em 0 1em 0;
+  }
+  .navi-btn {
+    opacity: 1;
+    margin: 1em 0 1em 0;
+  }
+  .content__flex-container {
+    display: flex;
+    justify-content: center;
+  }
+}

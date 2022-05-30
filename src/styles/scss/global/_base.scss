@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+html {
+	font-size: 10px;
+	min-width: 320px;
+}
+
+::-webkit-input-placeholder {
+	color: rgba(92, 95, 102, 1);
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+	overflow: hidden;
+	background: url("../../images/fullscreen.jpg") 20% / cover no-repeat local;
+	background-attachment: fixed;
+}
+
+.container {
+	margin: 0 auto;
+	max-width: 1200px;
+}

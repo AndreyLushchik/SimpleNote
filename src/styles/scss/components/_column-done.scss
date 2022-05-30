@@ -1,0 +1,74 @@
+.column-done {
+  display: flex;
+  flex-direction: column;
+  background: $card-color;
+  width: 35rem;
+  border-radius: 0.5rem;
+
+  &__title {
+    font-size: 2rem;
+    color: rgb(255, 255, 255);
+    font-family: "Roboto", sans-serif;
+    margin-bottom: 1rem;
+    margin: 1rem 0 1rem 3.5rem;
+  }
+
+  &__card-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    min-height: 3rem;
+    &.drag-enter {
+      min-height: 30rem;
+    }
+  }
+
+  &__btn-done--delete {
+    position: relative;
+    margin-bottom: 0.5rem;
+    margin-left: 2.5rem;
+    padding: 0.5rem 0.25rem 0.5rem 0rem;
+    width: 15rem;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.6rem;
+    color: rgb(255, 255, 255);
+    outline: none;
+    border: 1px solid rgba(110, 121, 128, 0.8);
+    border-top-color: rgba(0, 0, 0, 0.3);
+    border-radius: 0.5rem;
+    background: $button-color;
+
+    &:hover {
+      @include hover-button;
+    }
+
+    &:active {
+      @include active-button;
+    }
+
+    &::before {
+      content: "\f067";
+      position: absolute;
+      left: 1rem;
+      font-family: FontAwesome;
+      color: rgb(255, 255, 255);
+    }
+  }
+
+  .card {
+    background-color: #decc94;
+    &__btn-complete {
+      display: none;
+    }
+    &__btn-edit {
+      display: none;
+    }
+    &__btn-back {
+      display: none;
+    }
+    &__btn-progress {
+      display: none;
+    }
+  }
+}

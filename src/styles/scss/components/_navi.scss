@@ -1,0 +1,27 @@
+.navi-btn {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 6rem;
+  min-width: 50%;
+  margin: 0.5rem 0 0.5rem 0;
+
+  & > div {
+    position: relative;
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+  
+  &__todo {
+    background: #fff;
+  }
+
+  &__progress {
+    background: #c6c9ca;
+  }
+
+  &__done {
+    background: #decc94;
+  }
+}

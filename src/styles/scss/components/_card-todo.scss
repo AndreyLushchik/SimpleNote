@@ -1,0 +1,140 @@
+.card {
+  width: 30rem;
+  overflow-wrap: break-word;
+  min-height: 10em;
+  background: #ffff;
+  border-radius: 1em;
+  margin: 1em 1em 1em 1em;
+  padding: 0.8em;
+  cursor: pointer;
+  &:active {
+    cursor: grabbing;
+  }
+
+  &__title {
+    margin: 0.5em 0 0.5em;
+    overflow-wrap: break-word;
+    font-size: 1.2em;
+    text-align: justify;
+    text-decoration: underline;
+  }
+
+  &__description {
+    margin: 1em 0 1em;
+    overflow-wrap: break-word;
+    text-align: justify;
+  }
+
+  &__user {
+    margin: 1em 0 1em;
+  }
+
+  &__btn-edit {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: 0.1em 0.8em;
+    margin: 0 0.5em 0 0.5em;
+    outline: none;
+    border-width: 0.2rem 0;
+    border-style: solid none;
+    border-color: $color-pressed;
+    border-radius: 0.6rem;
+    background: $color-pressed;
+    transition: 0.2s;
+  }
+
+  &__btn-edit:hover {
+    @include hover-button;
+  }
+  &__btn-edit:active {
+    @include active-button;
+  }
+
+  &__btn-delete {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: 0.1em 0.8em;
+    outline: none;
+    border-width: 0.2rem 0;
+    border-style: solid none;
+    border-color: $color-pressed;
+    border-radius: 0.6rem;
+    background: $color-pressed;
+    transition: 0.2s;
+  }
+  &__btn-delete:hover {
+    @include hover-button;
+  }
+  &__btn-delete:active {
+    @include active-button;
+  }
+
+  &__btn-back {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: 0.1em 0.8em;
+    outline: none;
+    border-width: 0.2rem 0;
+    border-style: solid none;
+    border-color: $color-pressed;
+    border-radius: 0.6rem;
+    background: $color-pressed;
+    transition: 0.2s;
+  }
+  &__btn-back:hover {
+    @include hover-button;
+  }
+  &__btn-back:active {
+    @include active-button;
+  }
+
+  &__btn-complete {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: 0.1em 0.8em;
+    margin: 0 0.5em 0 0.5em;
+    outline: none;
+    border-width: 0.2rem 0;
+    border-style: solid none;
+    border-color: $color-pressed;
+    border-radius: 0.6rem;
+    background: $color-pressed;
+    transition: 0.2s;
+  }
+  &__btn-complete:hover {
+    @include hover-button;
+  }
+  &__btn-complete:active {
+    @include active-button;
+  }
+
+  &__btn-progress {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: 0.1em 0.8em;
+    outline: none;
+    border-width: 0.2rem 0;
+    border-style: solid none;
+    border-color: $color-pressed;
+    border-radius: 0.6rem;
+    background: $color-pressed;
+    transition: 0.2s;
+  }
+
+  &__btn-progress:hover {
+    @include hover-button;
+  }
+  &__btn-progress:active {
+    @include active-button;
+  }
+
+  &__time {
+    margin-left: 12.5em;
+    font-size: 1.2em;
+  }
+}

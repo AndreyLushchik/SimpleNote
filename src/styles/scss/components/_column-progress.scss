@@ -1,0 +1,25 @@
+.column-progress {
+  display: flex;
+  flex-direction: column;
+  background: $card-color;
+  width: 35rem;
+  border-radius: 0.5rem;
+
+  &__title {
+    font-size: 2rem;
+    color: rgb(255, 255, 255);
+    margin: 1rem 0 1rem 3.5rem;
+    font-family: "Roboto", sans-serif;
+  }
+
+  &__card-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    min-height: 3rem;
+    &.drag-enter {
+      min-height: 30rem;
+    }
+  }
+}
