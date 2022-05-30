@@ -1,4 +1,6 @@
-## Trello clone
+# Trello clone
+
+## To start, run the live server with index.html
 
 ### Task :bulb:
 
@@ -16,4 +18,4 @@
 - SCSS
 - HTML5
 
-# To start, run the live server with index.html
+
